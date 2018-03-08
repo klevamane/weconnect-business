@@ -150,3 +150,17 @@ body#dashboard {
       padding-left: 70px;
       
   }
+
+  #business-table a:hover{
+    color: rgb(255, 115, 0);
+    font-weight: bolder !important;
+    text-decoration: none !important;
+    
+  }
+  
+  #business-table a{
+    color:inherit;
+  }
+  #business-table {
+   color: rgb(13, 70, 109) !important;
+  }
