@@ -1,5 +1,6 @@
 body#dashboard {
     overflow-x: hidden;
+    background: rgb(229, 236, 241);
   }
   
   #wrapper {
