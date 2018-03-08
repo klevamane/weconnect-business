@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -31,7 +30,7 @@
                     <a href="#">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#" class="active">My Business</a>
+                    <a href="#">My Business</a>
                 </li>
                 <li>
                     <a href="#">Create Business</a>
@@ -77,13 +76,22 @@
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
+    <!-- </wrapper -->
 
+    
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/holder.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-
+    
+    <!-- Toggle script -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        </script>
+    
 
 </body>
 
