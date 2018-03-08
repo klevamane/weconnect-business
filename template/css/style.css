@@ -147,9 +147,9 @@ body#dashboard {
       color: rgb(255, 115, 0);
       border: none;
       display: inline-block;
-      padding-left: 70px;
-      
+      margin-bottom: 0;  
   }
+  
 
   #business-table a:hover{
     color: rgb(255, 115, 0);
@@ -160,7 +160,25 @@ body#dashboard {
   
   #business-table a{
     color:inherit;
+    font-weight: 600;
+    font-size: large;
   }
   #business-table {
    color: rgb(13, 70, 109) !important;
+  }
+  .app-primary-color{
+    color: rgb(13, 70, 109) !important;
+  }
+
+  #register-card {
+    color: rgb(13, 70, 109);
+  }
+
+  table thead tr th {
+    color: rgb(13, 70, 109) !important;
+    font-size: large;
+  }
+
+  .bg-orange{
+      background: rgb(221, 105, 11) !important;
   }
