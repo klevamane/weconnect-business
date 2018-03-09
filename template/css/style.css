@@ -5,11 +5,20 @@ body#dashboard {
   }
   
 body{
-  background: rgb(229, 234, 238);
+
+    background: rgb(193, 205, 214);
 }
 
 .app-buttons {
   background: rgb(255, 124, 17) !important;
+  color:#fff;
+  font-weight:300px;
+  border: rgb(255, 124, 17);
+}
+
+button.app-buttons:hover{
+  background: rgb(221, 117, 32) !important;
+ 
 }
 .sign-color {
       color: rgb(255, 124, 17) !important;
