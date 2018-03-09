@@ -211,6 +211,13 @@ button.app-buttons:hover{
   .orange-text {
     color : rgb(221, 105, 11) !important;
   }
+  .bg-orange-light {
+   background: rgb(255, 124, 17)
+  }
+  .bg-navyblue {
+    background:  rgb(13, 70, 109) !important;
+    color: #fff;
+  }
   #dashboard-search-text{
     background: transparent;
     border: none;
@@ -308,11 +315,11 @@ button.app-buttons:hover{
         REGISTER BUSINESS
 *********************************/
 #new-business {
-  height: 300px;
+  height: 500px;
   background:#fff;
   margin-top: 60px;
   border-radius: 10px;
-  padding: 30px 30px; 
+  padding: 30px 0; 
   text-align: center;
   
 }
