@@ -270,7 +270,9 @@ button.app-buttons:hover{
   }
   
   
- 
+ /**********************************
+              LOGO
+**********************************/
 
  .logo{
    font-family: 'Roboto' sans-serif;
@@ -281,3 +283,20 @@ button.app-buttons:hover{
  .logo2{
   color:#EEAA7B !important;
  }
+
+ /**********************************
+              MARGIN
+**********************************/
+.my-6 {
+  margin-bottom: 3rem !important;
+  margin-top: 6rem !important;
+}
+.my-bottom {
+  margin-bottom: 3rem !important;
+}
+.my-top {
+  margin-top: 0.4rem !important;
+}
+.my-to2 {
+  margin-top: 2.8rem !important;
+}
