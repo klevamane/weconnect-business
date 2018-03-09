@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+
+    <title>Client meets busines</title>
+
+</head>
+
+<body id="dashboard">
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="logo">
+                    <a href="#">
+                        WEconnect
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">My Business</a>
+                </li>
+                <li>
+                    <a href="#" class="active">Create Business</a>
+                </li>
+
+                <li>
+                    <a href="#">About</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+                <!--Head section -->
+
+                <div class="row" id="head-section">
+                        <div class="col-sm-1 col-md-1"><a href="#menu-toggle" class="btn btn-secondary fa fa-bars" id="menu-toggle">
+                        </a>
+                    </div>
+                    
+                    <div class=" col-sm-7 col-md-7">                                    
+                        <form action="./business.html" id="dashboard-form">
+                            <input type="text" name="dashboard-search-btn" id="dashboard-search-text" placeholder="Search Business">
+                            <button type="submit" class="btn bg-transparent app-primary-color" id="dashboard-search-btn"><i class="fa fa-search"></i></button>
+                        </form>
+                                  
+                    </div>
+                    <div class=" col-sm-4 col-md-4">
+                        <a href="#" class="btn btn-sm bg-transparent" id="signout"><i class="fa fa-mail-reply"></i> Signout</a>
+                    </div>
+                        
+                    </div>
+                    
+                    <!--</Head section -->
+                
+                    <!-- Register Company -->
+                    <div class="row">
+                        <div class="col-md">
+
+                        </div>
+                        <div class="col-md-6" id="new-business">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Register Business</h2><p><small>generate traction by registring</small> </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md">
+                            
+                            </div>
+                    </div>
+
+            </div>
+            <!-/#container-fluid -->
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- </wrapper -->
+
+    
+    <script src="./js/jquery-3.3.1.min.js "></script>
+    <script src="./js/holder.min.js "></script>
+    <script src="./js/popper.min.js "></script>
+    <script src="./js/bootstrap.min.js "></script>
+    
+    <!-- Toggle script -->
+    <script>
+        $("#menu-toggle ").click(function(e) {
+            e.preventDefault();
+            $("#wrapper ").toggleClass("toggled ");
+        });
+        </script>
+    
+
+</body>
+
+</html>
