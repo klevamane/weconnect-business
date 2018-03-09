@@ -398,3 +398,7 @@ INDEX
       height: 500px;
   }
 
+h1#index-header {
+  color:#fff;
+  font-weight: 300;
+}
