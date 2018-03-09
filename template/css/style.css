@@ -418,3 +418,6 @@ footer {
   padding: 20px;
   border-top: 5px solid #56b69f;;
 }
+h1#rating {
+  font-size:  200px !important;
+}
