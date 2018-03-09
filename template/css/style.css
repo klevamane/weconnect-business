@@ -3,6 +3,7 @@ body#dashboard {
     background: rgb(229, 236, 241);
   }
   
+
   #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -217,4 +218,3 @@ body#dashboard {
         float: none; /* Added */
   }
 
-  
