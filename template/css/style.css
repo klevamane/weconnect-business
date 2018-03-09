@@ -131,10 +131,11 @@ body#dashboard {
   }
 
   #main-content-header{
-      background: red;
+      background: #fff;
       height: 100px;
       padding-top: 0 !important;
       margin-top: 0 !important;
+      
   }
 
   .main-content-cards{
@@ -181,4 +182,32 @@ body#dashboard {
 
   .bg-orange{
       background: rgb(221, 105, 11) !important;
+  }
+
+  #dashboard-search-text{
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 100;
+    margin-left: 10px;
+    width: 350px;
+  }
+
+  #dashboard-form input[type="text"]:focus {
+    outline: none;
+  }
+  #signout {
+      text-decoration: none;
+      color: (13, 70, 109);
+  }
+  
+  #main-content-header input[type="text"]:focus {
+      outline: none;
+  }
+
+  #head-section {
+      background: #fff;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      margin-top: 0;
   }
