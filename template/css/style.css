@@ -379,9 +379,10 @@ INDEX
 }
 
 #navbar li.current a, #navbar a:hover {
-  border-bottom: 3px solid rgb(255, 124, 17) !important;
+  border-bottom: 3px solid rgb(255, 124, 17);
 }
 
-#navbar{
-  text-transform: uppercase;
+#navbar a.btn:hover {
+  border-bottom:none !important;
 }
+
