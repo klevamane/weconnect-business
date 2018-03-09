@@ -8,6 +8,9 @@ body{
 
     background: rgb(193, 205, 214);
 }
+body a {
+  text-decoration: none !important;
+}
 
 .app-buttons {
   background: rgb(255, 124, 17) !important;
