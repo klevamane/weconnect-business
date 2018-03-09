@@ -1,8 +1,20 @@
+
 body#dashboard {
     overflow-x: hidden;
     background: rgb(229, 236, 241);
   }
   
+body{
+  background: rgb(229, 234, 238);
+}
+
+.app-buttons {
+  background: rgb(255, 124, 17) !important;
+}
+.sign-color {
+      color: rgb(255, 124, 17) !important;
+  }
+
 
   #wrapper {
     padding-left: 0;
