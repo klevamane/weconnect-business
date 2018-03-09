@@ -411,5 +411,10 @@ h1#index-header {
     margin-top: 30px;
     border-top: 1px solid #56b69f;
   
-  
+}
+
+footer {
+  background:rgb(255, 124, 17);
+  padding: 20px;
+  border-top: 5px solid #56b69f;;
 }
