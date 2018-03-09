@@ -268,7 +268,7 @@ button.app-buttons:hover{
   .form-in input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus  {
     border-color: rgb(13, 70, 109) !important;
     -webkit-box-shadow: none;
-    box-shadow: 3px 3px rgb(13, 70, 109) !important;;
+    box-shadow: 3px 3px rgb(13, 70, 109) !important;
     color:rgb(13, 70, 109) !important;;
     font-size: large;
     
@@ -327,4 +327,61 @@ button.app-buttons:hover{
   line-height: 10px;
   padding-bottom: 0;
   font-weight:200;
+}
+
+/******************
+INDEX
+***************************/
+#i-header {
+  border-bottom: 2px solid rgb(13, 70, 109) !important;
+  background: #fff;
+}
+
+/*MEDIA QUERIES*/
+@media(max-width:799px){
+  .mediaq{
+     text-align:center;
+ } 
+ nav ul{
+     text-align: center;
+ }
+
+ #company h5 {
+     text-align: center; 
+ 
+ }
+ 
+ #company i {
+     align-content: center;
+     text-align: center;
+  } 
+}
+
+@media (min-width:801px) {
+  nav#navbar ul {
+      float: right;
+      
+  }
+  
+}
+
+
+#navbar li {
+  display: inline;
+  list-style: none;
+  padding-right: 15px;
+  
+}
+
+#navbar li a {
+  color: rgb(13, 70, 109);
+  text-decoration: none;
+}
+
+#navbar li.current a, #navbar a:hover {
+  border-bottom: 3px solid rgb(255, 124, 17) !important;
+}
+
+#navbar{
+  text-transform: uppercase;
 }
