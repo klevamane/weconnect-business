@@ -196,7 +196,9 @@ body{
   .bg-orange{
       background: rgb(221, 105, 11) !important;
   }
-
+  .orange-text {
+    color : rgb(221, 105, 11) !important;
+  }
   #dashboard-search-text{
     background: transparent;
     border: none;
@@ -230,3 +232,29 @@ body{
         float: none; /* Added */
   }
 
+  #form-in input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus  {
+    border-color: rgb(13, 70, 109) !important;
+    -webkit-box-shadow: none;
+    box-shadow: 3px 3px rgb(13, 70, 109) !important;;
+    color:rgb(13, 70, 109) !important;;
+    font-size: large;
+    
+  }
+
+  #form-in label {
+    color: rgb(13, 70, 109) !important;
+    font-size: 10px;
+  }
+  
+  
+ 
+
+ .logo{
+   font-family: 'Roboto' sans-serif;
+   color: #07889B !important;
+   font-weight: bolder;
+   font-size: 20px;
+ }
+ .logo2{
+  color:#EEAA7B !important;
+ }
