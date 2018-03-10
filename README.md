@@ -41,17 +41,6 @@ WeConnect provides a platform that brings businesses and individuals together. T
 # Author
 * Onengiye Richard (klevamane)
 
-
-## How to get a local copy
-#### Clone repository
-* Copy repository link
-* Create a folder location in your computer eg my/path/
-* cd my/path/
-* git clone repositorylink.git
-* cd we-connect
-* open index.html file
-
-
 # Built with
 1. Html and Css
 2. Bootstrap
