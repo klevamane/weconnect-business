@@ -30,6 +30,27 @@ class usercontroller {
       registerdUser
     });
   }
+  /**
+     * @static
+     * @description A registered user will be authenticated to gain access to the application
+     * @param  {object} req gets values passed to the api
+     * @param  {object} res sends result as output
+     * @returns {object} 202 status code and valid user message is returned if successful 
+     * @memberOf
+     */
+  static userLogin(req, res) {
+    const verifyEmail = req.body.email;
+    const verifyPassword = req.body.password;
+    for (let i = 0; i < users.length; i += 1) {
+      if (users[i].password === verifyPassword && users[i].email === verifyEmail) {
+        return res.status(202).json({
+          message: 'Valid user'
+        });
+      }
+    }
+    return res.status(401).json({
+      message: 'Wrong login credentials',
+    });
+  }
 }
-
 export default usercontroller;
