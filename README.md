@@ -30,17 +30,6 @@ WeConnect provides a platform that brings businesses and individuals together. T
 * open index.html file
 * Sign-in with any dummy email id and passowrd
 
-
-# Built with
-1. Html and Css
-2. Bootstrap
-3. JQuery
-
-# Contributors
-* Onengiye Richard (klevamane)
-# Author
-* Onengiye Richard (klevamane)
-
 # Built with
 1. Html and Css
 2. Bootstrap
