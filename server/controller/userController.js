@@ -35,7 +35,7 @@ class usercontroller {
      * @description A registered user will be authenticated to gain access to the application
      * @param  {object} req gets values passed to the api
      * @param  {object} res sends result as output
-     * @returns {object} 202 status code and valid user message is returned if successful 
+     * @returns {object} returns 202 status code and valid user message is  if successful, else 401
      * @memberOf
      */
   static userLogin(req, res) {
