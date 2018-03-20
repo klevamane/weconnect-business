@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import winston from 'winston';
 import logger from 'morgan';
 import userRoutes from './routes/userRoute';
+import businessRoutes from './routes/businessRoute';
 
 
 const app = express();
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Middleware implementing user routes
 app.use('/api/v1/auth', userRoutes);
+// Middleware for business routes
+app.use('/api/v1/businesses', businessRoutes);
 
 app.listen(port, () => { winston.info(`Server is running on port ${port}`); });
 
