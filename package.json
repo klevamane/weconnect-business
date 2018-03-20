@@ -1,0 +1,40 @@
+{
+  "name": "weconnect-business",
+  "version": "1.0.0",
+  "description": "WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist",
+    "dev": "babel-node ./server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klevamane/weconnect-business.git"
+  },
+  "keywords": [
+    "business",
+    "review"
+  ],
+  "author": "Onengiye Richard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klevamane/weconnect-business/issues"
+  },
+  "homepage": "https://github.com/klevamane/weconnect-business#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "winston": "^2.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "nodemon": "^1.17.2"
+  }
+}
