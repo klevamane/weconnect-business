@@ -23,3 +23,4 @@ app.use('/api/v1/businesses', businessRoutes);
 
 app.listen(port, () => { winston.info(`Server is running on port ${port}`); });
 
+export default app;
