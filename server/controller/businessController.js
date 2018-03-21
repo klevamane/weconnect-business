@@ -69,9 +69,7 @@ class businessController {
         url: req.body.url,
         updatedAt: Date.now()
       };
-      updatedBusiness = businesses
-      -
-      [businessPosition];
+      updatedBusiness = businesses[businessPosition];
       return res.status(200).json({
         message: 'Business has been updated',
         updatedBusiness

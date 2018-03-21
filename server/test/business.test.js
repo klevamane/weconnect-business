@@ -66,3 +66,32 @@ it('should return {} if string is passed as an Id', (done) => {
     });
 });
 
+describe('POST Business', () => {
+  it('should return 204 status code if business is created', (done) => {
+    chai.request(app)
+      .post('/api/v1/businesses')
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        done();
+      });
+  });
+
+  it('should return Business has been registered', (done) => {
+    chai.request(app)
+      .post('/api/v1/businesses')
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Business has been registerd');
+        done();
+      });
+  });
+
+  it('should return an object', (done) => {
+    chai.request(app)
+      .post('/api/v1/businesses')
+      .end((err, res) => {
+        expect(res).to.be.an('object');
+        done();
+      });
+  });
+});
+
