@@ -4,10 +4,10 @@ const router = express.Router();
 
 */
 import winston from 'winston';
+import businesses from '../model/businessModel';
 
-const a = 30;
-const b = 'check';
-
-winston.info(typeof a);
-winston.info(typeof b);
-
+// const businessId = 1;
+// const result = businesses.find(element => element.id === businessId);
+const numberOfKeys = Object.keys(businesses).length;
+// winston.info(result);
+winston.info(numberOfKeys);
