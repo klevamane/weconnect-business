@@ -7,6 +7,7 @@ const businessdb = [{
   catrgory: 'Informaton Technology',
   description: 'Business description would be displayed here',
   url: 'www.website@business.com',
+  ownerId: 1,
   createdAt: '03/03/2018',
   updatedAt: '03/03/2018',
 },
@@ -19,6 +20,7 @@ const businessdb = [{
   catrgory: 'Informaton Technology',
   description: 'Business description would be displayed here',
   url: 'www.website@business.ng',
+  ownerId: 2,
   createdAt: '02/03/2018',
   updatedAt: '02/03/2018',
 
