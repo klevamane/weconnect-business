@@ -133,9 +133,7 @@ class businessController {
 
       if (locationArray.length > 0) {
         return res.status(200).json({
-          locationArray,
-          message: 'Displaying business in the selected location',
-          error: false
+          locationArray
         });
       }
       if (locationArray.length === 0) {
@@ -152,10 +150,7 @@ class businessController {
       }
 
       if (cateogryArray.length > 0) {
-        return res.status(200).json({
-          message: 'Displaying list of businesses under the selected category',
-          cateogryArray
-        });
+        return res.status(200).json({ cateogryArray });
       }
       if (cateogryArray.length === 0) {
         return res.status(400).json({
@@ -187,12 +182,12 @@ class businessController {
     }
     if (business.length > 0) {
       return res.status(302).json({
-        message: 'Business found',
+        message: 'Business Details',
         business
 
       });
     }
-    return res.status(204).json({
+    return res.status(400).json({
       message: 'not available'
     });
   }

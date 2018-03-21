@@ -16,6 +16,7 @@ describe('/DELETE/:businessId', () => {
       });
   });
 
+
   it('should return message: Business has been deleted', (done) => {
     const businessId = 1;
     chai.request(app)
@@ -125,7 +126,6 @@ it('should display "List of all registered businesses"', (done) => {
     });
 });
 
-
 // GET by Id
 describe('/GET/:businessId', () => {
   it('should Return an object', (done) => {
@@ -144,7 +144,8 @@ describe('/GET/:businessId', () => {
       .end((err, res) => {
         const responseBody = res.body;
         const responseSize = Object.keys(responseBody).length;
-        expect(responseSize).to.not.be.above(0);
+        // also returns the message property so value = 1
+        expect(responseSize).to.not.be.above(1);
         done();
       });
   });
@@ -155,7 +156,7 @@ describe('/GET/:businessId', () => {
       .end((err, res) => {
         const responseBody = res.body;
         const responseSize = Object.keys(responseBody).length;
-        expect(responseSize).to.not.be.above(0);
+        expect(responseSize).to.be.above(0);
         done();
       });
   });
@@ -171,4 +172,3 @@ describe('/GET/:businessId', () => {
       });
   });
 });
-
