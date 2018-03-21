@@ -26,7 +26,7 @@ class usercontroller {
     const position = users.length - 1;
     const registerdUser = users[position];
     return res.status(200).json({
-      message: 'user has been registerd',
+      message: 'User has been registered',
       registerdUser
     });
   }
