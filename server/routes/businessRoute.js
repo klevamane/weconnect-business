@@ -6,5 +6,7 @@ const routes = express.Router();
 routes.post('/', businesscontroller.createBusiness);
 // Update a business
 routes.put('/:businessId', businesscontroller.updateBusiness);
+// Delete a business
+routes.delete('/:businessId', businesscontroller.deleteBusiness);
 
 export default routes;
