@@ -92,5 +92,33 @@ describe('POST /auth/login', () => {
         done();
       });
   });
+
+  it('should return Wrong login credentials', (done) => {
+    const user = {
+      email: 'mail@email.com',
+      password: 'wrongpassword'
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(user)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Wrong login credentials');
+        done();
+      });
+  });
+
+  it('should return Valid user', (done) => {
+    const user = {
+      email: 'mail@email.com',
+      password: 'pass'
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(user)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Valid user');
+        done();
+      });
+  });
 });
 
