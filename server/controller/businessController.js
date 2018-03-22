@@ -46,11 +46,6 @@ class businessController {
     let businessPosition;
     let updatedBusiness;
     const businessOwner = 1;
-    /*  include radix parameter 10
-        If the radix parameter is omitted, JavaScript assumes the following:
-        If the string begins with "0x", the radix is 16 (hexadecimal)
-        If the string begins with "0", the radix is 8 (octal). This feature is deprecated
-        If the string begins with any other value, the radix is 10 (decimal) */
     const paramId = parseInt(req.params.businessId, 10);
     for (let i = 0; i < businesses.length; i += 1) {
       if (businesses[i].id === paramId && businesses[i].ownerId === businessOwner) {
@@ -74,7 +69,9 @@ class businessController {
         url: req.body.url,
         updatedAt: Date.now()
       };
-      updatedBusiness = businesses[businessPosition];
+      updatedBusiness = businesses
+      -
+      [businessPosition];
       return res.status(200).json({
         message: 'Business has been updated',
         updatedBusiness
@@ -94,11 +91,6 @@ class businessController {
     let businessPosition;
     // let deletedBusiness;
     const businessOwner = 1;
-    /*  include radix parameter 10
-            If the radix parameter is omitted, JavaScript assumes the following:
-            If the string begins with "0x", the radix is 16 (hexadecimal)
-            If the string begins with "0", the radix is 8 (octal). This feature is deprecated
-            If the string begins with any other value, the radix is 10 (decimal) */
     const paramId = parseInt(req.params.businessId, 10);
     for (let i = 0; i < businesses.length; i += 1) {
       if (businesses[i].id === paramId && businesses[i].ownerId === businessOwner) {
@@ -110,12 +102,14 @@ class businessController {
     if (userStatus === false) {
       return res.status(401).json({
         message: 'Only business owner can delete a business',
+        error: false
       });
     }
     businesses.splice(businessPosition, 1);
-    return res.status(401).json({
-      message: 'Business has been deleted, Displaying remaining businesses',
-      businesses
+    return res.status(204).json({
+      message: 'Business has been deleted',
+      businesses,
+      error: false
     });
   }
 }
