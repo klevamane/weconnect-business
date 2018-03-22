@@ -1,10 +1,10 @@
-const businessdb = [{
+const businesses = [{
   id: 1,
   name: 'Wayne&lucian',
   address1: '141 Maine stree, old town, port-harcourt',
-  state: 'Rivers',
+  location: 'rivers',
   mobile: '07023456643',
-  catrgory: 'Informaton Technology',
+  catrgory: 'IT',
   description: 'Business description would be displayed here',
   url: 'www.website@business.com',
   ownerId: 1,
@@ -15,9 +15,9 @@ const businessdb = [{
   id: 2,
   name: 'Clay&simon',
   address1: '1721 Bode roade, old town, port-harcourt',
-  state: 'Bayelsa',
+  location: 'bayelsa',
   mobile: '07031156643',
-  catrgory: 'Informaton Technology',
+  catrgory: 'Medicine',
   description: 'Business description would be displayed here',
   url: 'www.website@business.ng',
   ownerId: 2,
@@ -26,4 +26,4 @@ const businessdb = [{
 
 }];
 
-export default businessdb;
+export default businesses;
