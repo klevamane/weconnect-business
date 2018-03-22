@@ -64,3 +64,33 @@ describe('POST /user', () => {
   });
 });
 
+describe('POST /auth/login', () => {
+  it('should authenticate a registered user', (done) => {
+    const user = {
+      email: 'mail@email.com',
+      password: 'pass'
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(user)
+      .end((err, res) => {
+        expect(res).to.have.status(202);
+        done();
+      });
+  });
+
+  it('should return 401 unathorized user', (done) => {
+    const user = {
+      email: 'mail@email.com',
+      password: 'wrongpassword'
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(user)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        done();
+      });
+  });
+});
+
