@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+ - "6"
+notifications:
+ email: false
+cache:
+ directories:
+   - node_modules
+before_script:
+ - npm install
+script:
+ - npm run test
+# - npm run check-coverage
+# after_success:
+#  - npm run coverage
+#  - npm run report-coverage
+#  - npm run coveralls
