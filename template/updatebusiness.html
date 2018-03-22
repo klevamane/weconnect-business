@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+
+    <title>Client meets busines</title>
+
+</head>
+
+<body id="dashboard">
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="logo">
+                    <a href="./index.html">
+                        WEconnect
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="./dashboard.html">My Business</a>
+                </li>
+                <li>
+                    <a href="#">Create Business</a>
+                </li>
+
+                <li>
+                    <a href="#">About</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+                <!--Head section -->
+
+                <div class="row" id="head-section">
+                    <div class="col-sm-1 col-md-1">
+                        <a href="#menu-toggle" class="btn btn-secondary fa fa-bars" id="menu-toggle">
+                        </a>
+                    </div>
+
+                    <div class=" col-sm-7 col-md-7">
+                        <form action="./dashboard.html" id="dashboard-form">
+                            <input type="text" name="dashboard-search-btn" id="dashboard-search-text" placeholder="Search for a business here">
+                            <button type="submit" class="btn bg-transparent app-primary-color" id="dashboard-search-btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <a href="./index.html" class="btn btn-sm bg-transparent float-right" id="signout">
+                            <i class="fa fa-mail-reply"></i> Signout</a>
+                    </div>
+
+                </div>
+
+                <!--</Head section -->
+
+                <!-- Update Company -->
+                <div class="row">
+                    <div class="col-md">
+
+                    </div>
+                    <div class="col-md-6" id="new-business">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Update Business</h2>
+                                    <p>
+                                        <small>Changing economy</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md bg-orange-light p-3"><span>review</span></div>
+                                <div class="col-md bg-navyblue p-3">publish</div>
+                                <div class="col-md bg-navyblue p-3">sprint</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h6 class="text-center my-5">change company details</h6>
+                                </div>
+
+                            </div>
+                            <!-- # row -->
+
+                            <div class="row">
+                                <div class="col-md"></div>
+
+                                <div class="col-md-8">
+                                    <!--Form-->
+                                    <form class="form-in">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Busines name</label>
+                                                <input type="text" class="form-control" id="bus_name" placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="url">URL</label>
+                                                <input type="url" class="form-control" id="url" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAddress">Address</label>
+                                            <input type="text" class="form-control" id="inputAddress" placeholder="">
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCity">City</label>
+                                                <input type="text" class="form-control" id="inputCity" placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <!-- State -->
+                                                <label for="inputState">State</label>  
+                                                <select id="inputState" class="form-control">
+                                                        <option selected>Select State</option>
+                                                        <option value="1">Abia</option>
+                
+                                                        <option value="2">Adamawa</option>
+                
+                                                        <option value="3">Akwa Ibom</option>
+                
+                                                        <option value="4">Anambra </option>
+                
+                                                        <option value="5">Bauchi</option>
+                
+                                                        <option value="6">Bayelsa </option>
+                
+                                                        <option value="7">Benue</option>
+                
+                                                        <option value="8">Borno</option>
+                
+                                                        <option value="9">Cross River </option>
+                
+                                                        <option value="10">Delta </option>
+                
+                                                        <option value="11">Ebonyi </option>
+                
+                                                        <option value="12">Edo</option>
+                
+                                                        <option value="13">Ekiti</option>
+                
+                                                        <option value="14">Enugu </option>
+                
+                                                        <option value="15">FCT</option>
+                
+                                                        <option value="16">Gombe </option>
+                
+                                                        <option value="17">Imo</option>
+                
+                                                        <option value="18">Jigawa</option>
+                
+                                                        <option value="19">Kaduna</option>
+                
+                                                        <option value="20">Kano</option>
+                
+                                                        <option value="21">katsina</option>
+                
+                                                        <option value="22">Kebbi</option>
+                
+                                                        <option value="23">Kogi</option>
+                
+                                                        <option value="24">Kwara</option>
+                
+                                                        <option value="25">Lagos</option>
+                
+                                                        <option value="26">Nasarawa</option>
+                
+                                                        <option value="27">Niger</option>
+                
+                                                        <option value="28">Ogun </option>
+                
+                                                        <option value="29">Ondo</option>
+                
+                                                        <option value="30">Osun</option>
+                
+                                                        <option value="31">Oyo</option>
+                
+                                                        <option value="32">Plateau</option>
+                
+                                                        <option value="33">Rivers</option>
+                
+                                                        <option value="34">Sokoto</option>
+                
+                                                        <option value="35">Taraba </option>
+                
+                                                        <option value="36">Yobe</option>
+                
+                                                        <option value="37">Zamfara </option>
+                                                
+                                                </select>
+                                            
+                                            </div>
+                                          <!-- #State-->
+
+                                            <div class="form-group col-md-4">
+                                                <label for="type">Type</label>
+                                                <select class="form-control" id="company_type">
+                                                    <option selected>Choose..</option>
+                                                    <option>Self Owned</option>
+                                                    <option>Public</option>
+                                                    <option>Non-Profit</option>
+                                                    <option>Privately Held</option>
+                                                    <option>Educational</option>
+                                                    <option>Government Agency</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Form row 4 -->
+                                        <div class="form-row">
+                                            <!-- Upload file -->
+                                            <div class="form-group col-md-4">
+                                                <label for="updatefile">logo</label>
+                                                <input type="file" class="form-control-file" id="updatefile">
+                                            </div>
+                                            <!--#Upload file -->
+                                            <div class="form-group col-md-4">
+                                                <label for="industry">Industry</label>
+
+                                                <!-- Industry -->
+                                                <select class="form-control" id="industry">
+                                                    <option selected>Choose...</option>
+                                                    <option value="47">Accounting</option>
+                                                    <option value="94">Airlines/Aviation</option>
+                                                    <option value="120">Alternative Dispute Resolution</option>
+                                                    <option value="125">Alternative Medicine</option>
+                                                    <option value="127">Animation</option>
+                                                    <option value="19">Apparel &amp; Fashion</option>
+                                                    <option value="50">Architecture &amp; Planning</option>
+                                                    <option value="111">Arts and Crafts</option>
+                                                    <option value="53">Automotive</option>
+                                                    <option value="52">Aviation &amp; Aerospace</option>
+                                                    <option value="41">Banking</option>
+                                                    <option value="12">Biotechnology</option>
+                                                    <option value="36">Broadcast Media</option>
+                                                    <option value="49">Building Materials</option>
+                                                    <option value="138">Business Supplies and Equipment</option>
+                                                    <option value="129">Capital Markets</option>
+                                                    <option value="54">Chemicals</option>
+                                                    <option value="90">Civic &amp; Social Organization</option>
+                                                    <option value="51">Civil Engineering</option>
+                                                    <option value="128">Commercial Real Estate</option>
+                                                    <option value="118">Computer &amp; Network Security</option>
+                                                    <option value="109">Computer Games</option>
+                                                    <option value="3">Computer Hardware</option>
+                                                    <option value="5">Computer Networking</option>
+                                                    <option value="4">Computer Software</option>
+                                                    <option value="48">Construction</option>
+                                                    <option value="24">Consumer Electronics</option>
+                                                    <option value="25">Consumer Goods</option>
+                                                    <option value="91">Consumer Services</option>
+                                                    <option value="18">Cosmetics</option>
+                                                    <option value="65">Dairy</option>
+                                                    <option value="1">Defense &amp; Space</option>
+                                                    <option value="99">Design</option>
+                                                    <option value="69">Education Management</option>
+                                                    <option value="132">E-Learning</option>
+                                                    <option value="112">Electrical/Electronic Manufacturing</option>
+                                                    <option value="28">Entertainment</option>
+                                                    <option value="86">Environmental Services</option>
+                                                    <option value="110">Events Services</option>
+                                                    <option value="76">Executive Office</option>
+                                                    <option value="122">Facilities Services</option>
+                                                    <option value="63">Farming</option>
+                                                    <option value="43">Financial Services</option>
+                                                    <option value="38">Fine Art</option>
+                                                    <option value="66">Fishery</option>
+                                                    <option value="34">Food &amp; Beverages</option>
+                                                    <option value="23">Food Production</option>
+                                                    <option value="101">Fund-Raising</option>
+                                                    <option value="26">Furniture</option>
+                                                    <option value="29">Gambling &amp; Casinos</option>
+                                                    <option value="145">Glass, Ceramics &amp; Concrete</option>
+                                                    <option value="75">Government Administration</option>
+                                                    <option value="148">Government Relations</option>
+                                                    <option value="140">Graphic Design</option>
+                                                    <option value="124">Health, Wellness and Fitness</option>
+                                                    <option value="68">Higher Education</option>
+                                                    <option value="14">Hospital &amp; Health Care</option>
+                                                    <option value="31">Hospitality</option>
+                                                    <option value="137">Human Resources</option>
+                                                    <option value="134">Import and Export</option>
+                                                    <option value="88">Individual &amp; Family Services</option>
+                                                    <option value="147">Industrial Automation</option>
+                                                    <option value="84">Information Services</option>
+                                                    <option value="96">Information Technology and Services</option>
+                                                    <option value="42">Insurance</option>
+                                                    <option value="74">International Affairs</option>
+                                                    <option value="141">International Trade and Development</option>
+                                                    <option value="6">Internet</option>
+                                                    <option value="45">Investment Banking</option>
+                                                    <option value="46">Investment Management</option>
+                                                    <option value="73">Judiciary</option>
+                                                    <option value="77">Law Enforcement</option>
+                                                    <option value="9">Law Practice</option>
+                                                    <option value="10">Legal Services</option>
+                                                    <option value="72">Legislative Office</option>
+                                                    <option value="30">Leisure, Travel &amp; Tourism</option>
+                                                    <option value="85">Libraries</option>
+                                                    <option value="116">Logistics and Supply Chain</option>
+                                                    <option value="143">Luxury Goods &amp; Jewelry</option>
+                                                    <option value="55">Machinery</option>
+                                                    <option value="11">Management Consulting</option>
+                                                    <option value="95">Maritime</option>
+                                                    <option value="80">Marketing and Advertising</option>
+                                                    <option value="97">Market Research</option>
+                                                    <option value="135">Mechanical or Industrial Engineering</option>
+                                                    <option value="126">Media Production</option>
+                                                    <option value="17">Medical Devices</option>
+                                                    <option value="13">Medical Practice</option>
+                                                    <option value="139">Mental Health Care</option>
+                                                    <option value="71">Military</option>
+                                                    <option value="56">Mining &amp; Metals</option>
+                                                    <option value="35">Motion Pictures and Film</option>
+                                                    <option value="37">Museums and Institutions</option>
+                                                    <option value="115">Music</option>
+                                                    <option value="114">Nanotechnology</option>
+                                                    <option value="81">Newspapers</option>
+                                                    <option value="100">Nonprofit Organization Management</option>
+                                                    <option value="57">Oil &amp; Energy</option>
+                                                    <option value="113">Online Media</option>
+                                                    <option value="123">Outsourcing/Offshoring</option>
+                                                    <option value="87">Package/Freight Delivery</option>
+                                                    <option value="146">Packaging and Containers</option>
+                                                    <option value="61">Paper &amp; Forest Products</option>
+                                                    <option value="39">Performing Arts</option>
+                                                    <option value="15">Pharmaceuticals</option>
+                                                    <option value="131">Philanthropy</option>
+                                                    <option value="136">Photography</option>
+                                                    <option value="117">Plastics</option>
+                                                    <option value="107">Political Organization</option>
+                                                    <option value="67">Primary/Secondary Education</option>
+                                                    <option value="83">Printing</option>
+                                                    <option value="105">Professional Training &amp; Coaching</option>
+                                                    <option value="102">Program Development</option>
+                                                    <option value="79">Public Policy</option>
+                                                    <option value="98">Public Relations and Communications</option>
+                                                    <option value="78">Public Safety</option>
+                                                    <option value="82">Publishing</option>
+                                                    <option value="62">Railroad Manufacture</option>
+                                                    <option value="64">Ranching</option>
+                                                    <option value="44">Real Estate</option>
+                                                    <option value="40">Recreational Facilities and Services</option>
+                                                    <option value="89">Religious Institutions</option>
+                                                    <option value="144">Renewables &amp; Environment</option>
+                                                    <option value="70">Research</option>
+                                                    <option value="32">Restaurants</option>
+                                                    <option value="27">Retail</option>
+                                                    <option value="121">Security and Investigations</option>
+                                                    <option value="7">Semiconductors</option>
+                                                    <option value="58">Shipbuilding</option>
+                                                    <option value="20">Sporting Goods</option>
+                                                    <option value="33">Sports</option>
+                                                    <option value="104">Staffing and Recruiting</option>
+                                                    <option value="22">Supermarkets</option>
+                                                    <option value="8">Telecommunications</option>
+                                                    <option value="60">Textiles</option>
+                                                    <option value="130">Think Tanks</option>
+                                                    <option value="21">Tobacco</option>
+                                                    <option value="108">Translation and Localization</option>
+                                                    <option value="92">Transportation/Trucking/Railroad</option>
+                                                    <option value="59">Utilities</option>
+                                                    <option value="106">Venture Capital &amp; Private Equity</option>
+                                                    <option value="16">Veterinary</option>
+                                                    <option value="93">Warehousing</option>
+                                                    <option value="133">Wholesale</option>
+                                                    <option value="142">Wine and Spirits</option>
+                                                    <option value="119">Wireless</option>
+                                                    <option value="103">Writing and Editing</option>
+                                                </select>
+                                                <!--#Industry -->
+
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="no_employess"># of employees</label>
+                                                <select class="form-control" id="no_employess">
+                                                    <option>1-10</option>
+                                                    <option>11-20</option>
+                                                    <option>21 -50</option>
+                                                    <option>51 -100</option>
+                                                    <option>101 -500</option>
+                                                    <option>>500</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <!--#Form row 4 -->
+
+                                        <!-- Form row 5 -->
+                                        <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                        <label for="company_desc">Company Description</label>
+                                                        <textarea class="form-control" id="company_desc" rows="3"></textarea>
+                                                </div>
+                                               
+                                        </div>
+                                        <!--# Form row 5 -->
+
+                                        <div class="form-group">
+                                        </div>
+                                        <button type="submit" class="btn app-buttons">Update <i class="fa fa-spinner"></i></button>
+                                    </form>
+                                    <!--#Form -->
+                                </div>
+
+                                <div class="col-md"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md">
+
+                    </div>
+                </div>
+
+            </div>
+            <!-/#container-fluid -->
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- </wrapper -->
+
+
+    <script src="./js/jquery-3.3.1.min.js "></script>
+    <script src="./js/holder.min.js "></script>
+    <script src="./js/popper.min.js "></script>
+    <script src="./js/bootstrap.min.js "></script>
+
+    <!-- Toggle script -->
+    <script>
+        $("#menu-toggle ").click(function (e) {
+            e.preventDefault();
+            $("#wrapper ").toggleClass("toggled ");
+        });
+    </script>
+
+
+</body>
+
+</html>

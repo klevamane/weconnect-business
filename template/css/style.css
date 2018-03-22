@@ -1,0 +1,423 @@
+
+body#dashboard {
+    overflow-x: hidden;
+    background: rgb(229, 236, 241);
+  }
+  
+body{
+
+    background: rgb(193, 205, 214);
+}
+body a {
+  text-decoration: none !important;
+}
+
+.app-buttons {
+  background: rgb(255, 124, 17) !important;
+  color:#fff !important;
+  font-weight:300px;
+  border: rgb(255, 124, 17);
+}
+
+button.app-buttons:hover{
+  background: rgb(221, 117, 32) !important;
+ 
+}
+.sign-color {
+      color: rgb(255, 124, 17) !important;
+  }
+
+
+  #wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+  
+  #sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #1c3555;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+  
+  #page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+  }
+  
+  #wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+  }
+  
+  
+  /* Sidebar Styles */
+  
+  .sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+  }
+  
+  .sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+  }
+  
+  .sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgb(255, 115, 0);
+    
+  }
+
+  #sidebar-wrapper ul li a.active {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 5px;
+    background: #152b47;
+    border-left: 6px solid rgb(255, 115, 0);
+    font-weight: 300px;
+}
+   
+  .sidebar-nav li a:active, .sidebar-nav li a:focus {
+    text-decoration: none;
+  }
+  
+  .sidebar-nav>.logo {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+  }
+  
+  .sidebar-nav>.logo a {
+    color: #999999;
+  }
+  
+  .sidebar-nav>.logo a:hover {
+    color: #fff;
+    background: none;
+  }
+  
+  @media(min-width:768px) {
+    #wrapper {
+      padding-left: 0;
+    }
+    #wrapper.toggled {
+      padding-left: 250px;
+    }
+    #sidebar-wrapper {
+      width: 0;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+      width: 250px;
+    }
+    #page-content-wrapper {
+      padding:0;
+      position: relative;
+    }
+    #wrapper.toggled #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+    }
+  }
+
+  #main-content-header{
+      background: #fff;
+      height: 100px;
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+      
+  }
+
+  .main-content-cards{
+      background:rgb(13, 70, 109) !important;
+  }
+
+  .card-heading {
+      font-size: 50px;
+      font-weight: bold;
+      color: rgb(255, 115, 0);
+      border: none;
+      display: inline-block;
+      margin-bottom: 0;  
+  }
+  
+
+  #business-table a:hover{
+    color: rgb(255, 115, 0);
+    font-weight: bolder !important;
+    text-decoration: none !important;
+    
+  }
+  
+  #business-table a{
+    color:inherit;
+    font-weight: 600;
+    font-size: large;
+  }
+  #business-table {
+   color: rgb(13, 70, 109) !important;
+  }
+  .app-primary-color{
+    color: rgb(13, 70, 109) !important;
+  }
+
+  #register-card {
+    color: rgb(13, 70, 109);
+  }
+
+  table thead tr th {
+    color: rgb(13, 70, 109) !important;
+    font-size: large;
+  }
+
+  .bg-orange{
+      background: rgb(221, 105, 11) !important;
+  }
+  .orange-text {
+    color : rgb(221, 105, 11) !important;
+  }
+  .bg-orange-light {
+   background: rgb(255, 124, 17)
+  }
+  .bg-navyblue {
+    background:  rgb(13, 70, 109) !important;
+    color: #fff;
+  }
+  #dashboard-search-text{
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 100;
+    margin-left: 10px;
+    width: 350px;
+  }
+
+  #dashboard-form input[type="text"]:focus {
+    outline: none;
+  }
+  #signout {
+      text-decoration: none;
+      color: rgb(13, 70, 109);
+  }
+  
+  #main-content-header input[type="text"]:focus {
+      outline: none;
+  }
+
+  #head-section {
+      background: #fff;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      margin-top: 0;
+  }
+
+  .card {
+            margin: 0 auto; /* Added */
+        float: none; /* Added */
+  }
+
+  #form-in input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="url"]:focus  {
+    border-color: rgb(13, 70, 109) !important;
+    -webkit-box-shadow: none;
+    box-shadow: 3px 3px rgb(13, 70, 109) !important;;
+    color:rgb(13, 70, 109) !important;;
+    font-size: large;
+    
+  }
+
+  #form-in label {
+    color: rgb(13, 70, 109) !important;
+    font-size: 10px;
+  }
+
+  .form-in input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus  {
+    border-color: rgb(13, 70, 109) !important;
+    -webkit-box-shadow: none;
+    box-shadow: 3px 3px rgb(13, 70, 109) !important;
+    color:rgb(13, 70, 109) !important;;
+    font-size: large;
+    
+  }
+
+  .form-in label {
+    color: rgb(13, 70, 109) !important;
+    font-size: 10px;
+  }
+  
+  
+ /**********************************
+              LOGO
+**********************************/
+
+ .logo{
+   font-family: 'Roboto' sans-serif;
+   color: #07889B !important;
+   font-weight: bolder;
+   font-size: 20px;
+ }
+ .logo2{
+  color:#EEAA7B !important;
+ }
+
+ /**********************************
+              MARGIN
+**********************************/
+.my-6 {
+  margin-bottom: 3rem !important;
+  margin-top: 6rem !important;
+}
+.my-bottom {
+  margin-bottom: 3rem !important;
+}
+.my-top {
+  margin-top: 0.4rem !important;
+}
+.my-to2 {
+  margin-top: 2.8rem !important;
+}
+
+/*********************************
+        REGISTER BUSINESS
+*********************************/
+#new-business {
+  height: 100%;
+  background:#fff;
+  margin-top: 60px;
+  border-radius: 10px;
+  padding: 70px 0; 
+  text-align: center;
+  
+}
+#new-business h2,h3,h4,h5 {
+  line-height: 10px;
+  padding-bottom: 0;
+  font-weight:200;
+}
+
+/******************
+INDEX
+***************************/
+#i-header {
+  border-bottom: 2px solid rgb(13, 70, 109) !important;
+  background: #fff;
+}
+
+/*MEDIA QUERIES*/
+@media(max-width:799px){
+  .mediaq{
+     text-align:center;
+ } 
+ nav ul{
+     text-align: center;
+ }
+
+ #company h5 {
+     text-align: center; 
+ 
+ }
+ 
+ #company i {
+     align-content: center;
+     text-align: center;
+  } 
+}
+
+@media (min-width:801px) {
+  nav#navbar ul {
+      float: right;
+      
+  }
+  
+}
+
+
+#navbar li {
+  display: inline;
+  list-style: none;
+  padding-right: 15px;
+  
+}
+
+#navbar li a {
+  color: rgb(13, 70, 109);
+  text-decoration: none;
+}
+
+#navbar li.current a, #navbar a:hover {
+  border-bottom: 3px solid rgb(255, 124, 17);
+}
+
+#navbar a.btn:hover {
+  border-bottom:none !important;
+}
+
+/*****index-SHOWCASE****/
+
+#index-showcase {
+  background:url('../img/mac3.jpeg') no-repeat center center;
+  border-bottom: 1px solid rgb(255, 124, 17);
+  margin-bottom: 30px;
+}
+
+#index-showcase .row{
+      height: 500px;
+  }
+
+h1#index-header {
+  color:#fff;
+  font-weight: 300;
+}
+
+#business-info {
+  background: rgb(13, 70, 109);
+  color: #fff;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    border-top: 1px solid #56b69f;
+  
+}
+
+footer {
+  background:rgb(255, 124, 17);
+  padding: 20px;
+  border-top: 5px solid #56b69f;;
+}
+h1#rating {
+  font-size:  200px !important;
+}
