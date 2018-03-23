@@ -4,7 +4,7 @@ import app from '../app';
 
 const { expect } = chai;
 chai.use(chaiHttp);
-// DELETE
+// CREATE
 describe('POST /user', () => {
   it('should create a new user', (done) => {
     const user = {
