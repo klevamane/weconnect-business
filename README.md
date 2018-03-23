@@ -9,6 +9,8 @@ WeConnect provides a platform that brings businesses and individuals together. T
 ## Prerequisite
 1. Internet connection
 2. Internet browser
+3. Nodejs
+4. git
 
 ## URL
 * https://klevamane.github.io/weconnect-business/template/index.html
@@ -19,9 +21,12 @@ WeConnect provides a platform that brings businesses and individuals together. T
 * Create a folder location in your computer eg my/path/
 * cd my/path/
 * git clone repositorylink.git
-* cd we-connect
+* cd we-connect-business
+* npm install
+* npm run dev
 * open index.html file
 * Sign-in with any dummy email id and passowrd
+
 
 ## Branches
 The branches are structured in a way that they correspond to feature developed in the application. for example the with name a ft-login-xxxx corresponds codes for the log in page and ft-signup-xxx corresponds to codes for the signup page, some other branches to update user interface and implement quick fix also exist.
