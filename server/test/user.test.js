@@ -63,7 +63,6 @@ describe('POST /user', () => {
       });
   });
 });
-
 describe('POST /auth/login', () => {
   it('should authenticate a registered user', (done) => {
     const user = {
