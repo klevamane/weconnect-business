@@ -12,8 +12,7 @@ class reviewController {
      * @description create review for a registered business
      * @param  {object} req gets values passed to the api
      * @param  {object} res sends result as output
-     * @returns {object} Success message with the user created or error message
-     * @memberOf
+     * @returns {object} Success message with the user created or error messageS
      */
   static createReview(req, res) {
     const oldreviewLength = reviews.length;
@@ -37,7 +36,6 @@ class reviewController {
       return res.status(201).json(reviews);
     }
   }
-
   /**
      * List Business Review
      * @static
@@ -45,7 +43,6 @@ class reviewController {
      * @param  {object} req gets values passed to the api
      * @param  {object} res sends result as output
      * @returns {object} review object with the user status code
-     * @memberOf
      */
   static getBusinessReviews(req, res) {
     const businessId = parseInt(req.params.businessId, 10);
