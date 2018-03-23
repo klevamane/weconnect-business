@@ -5,10 +5,15 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha ./server/test --exit --compilers js:babel-register --timeout 20000",
-    "start": "node ./dist",
+    "start": "babel-node ./server/app.js",
     "dev": "babel-node ./server/app.js",
     "sandbox": "babel-node ./server/routes/sandboxroute.js"
   },
+"engines": {
+  "node": "8.9.3",
+  "npm" : "5.5.1"
+},
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/klevamane/weconnect-business.git"
