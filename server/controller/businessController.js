@@ -1,9 +1,9 @@
 import businesses from '../model/businessModel';
 
 /**
-     * @class businessController
-     * @classdesc creates a usercontroller class with methods
-     */
+  * @class businessController
+  * @classdesc creates a usercontroller class with methods
+  */
 class businessController {
   /**
      * Register a new business on the platform

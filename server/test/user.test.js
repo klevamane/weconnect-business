@@ -8,13 +8,13 @@ chai.use(chaiHttp);
 describe('POST /user', () => {
   it('should create a new user', (done) => {
     const user = {
-      id: 1,
-      email: 'userone@email.com',
-      firstname: 'Durant',
-      lastname: 'Kevin',
-      password: 'newpassword',
-      createdAt: '03/03/2018',
-      updatedAt: '03/03/2018'
+      id: '',
+      email: '',
+      firstname: '',
+      lastname: '',
+      password: '',
+      createdAt: '',
+      updatedAt: ''
     };
     chai.request(app)
       .post('/api/v1/auth/signup')
