@@ -1,7 +1,6 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../app';
-// import businesses from '../model/businessModel';
 import reviews from '../model/reviewModel';
 
 const { expect } = chai;
@@ -24,7 +23,6 @@ describe('POST /business / review', () => {
       });
   });
 });
-
 it('it should retur 201 status code', (done) => {
   const businessId = 5;
   chai.request(app)
@@ -34,8 +32,6 @@ it('it should retur 201 status code', (done) => {
       done();
     });
 });
-
-
 describe('GET /business / review', () => {
   it('it should return an object', (done) => {
     const businessId = 1;
@@ -46,7 +42,6 @@ describe('GET /business / review', () => {
         done();
       });
   });
-
   it('it should return 302 status code', (done) => {
     const businessId = 1;
     chai.request(app)
