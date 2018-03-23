@@ -11,3 +11,11 @@ import businesses from '../model/businessModel';
 const numberOfKeys = Object.keys(businesses).length;
 // winston.info(result);
 winston.info(numberOfKeys);
+
+const myobject = {
+  id: 1,
+  name: 2
+};
+const myarr = [];
+myarr.push(myobject);
+winston.info(myarr.length);
