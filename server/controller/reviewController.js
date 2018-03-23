@@ -1,5 +1,6 @@
 import reviews from '../model/reviewModel';
 import businesses from '../model/businessModel';
+import users from '../model/userModel';
 /**
      * @class revieController
      * @classdesc creates a review class with methods
@@ -16,18 +17,23 @@ class reviewController {
      */
   static createReview(req, res) {
     const oldreviewLength = reviews.length;
-    const userid = parseInt(req.params.businessId, 10);
-
+    const businessid = parseInt(req.params.businessId, 10);
+    const userId = 2;
     const review = {
       id: reviews.length + 1,
-      userId: userid,
+      userId,
       businessId: parseInt(req.params.businessId, 10),
       comment: req.body.comment,
       createdAt: Date.now()
     };
-    if (userid > 2) {
+    if (businessid > businesses.length || businessid <= 0) {
       return res.status(401).json({
-        message: 'Kindly register to comment'
+        message: 'Business not registered'
+      });
+    }
+    if (userId > users.length || userId <= 0) {
+      return res.status(401).json({
+        message: 'Kindly register in order comment'
       });
     }
 
@@ -35,9 +41,6 @@ class reviewController {
     if (reviews.length > oldreviewLength) {
       return res.status(201).json(reviews);
     }
-    return res.status(406).json({
-      message: 'Something went wrong'
-    });
   }
 
   /**
