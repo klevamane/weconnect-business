@@ -25,6 +25,17 @@ describe('POST /business / review', () => {
   });
 });
 
+it('it should retur 201 status code', (done) => {
+  const businessId = 5;
+  chai.request(app)
+    .post(`/api/v1/businesses/${businessId}/reviews`)
+    .end((err, res) => {
+      expect(res.statusCode).to.equal(401);
+      done();
+    });
+});
+
+
 describe('GET /business / review', () => {
   it('it should return an object', (done) => {
     const businessId = 1;
