@@ -27,16 +27,11 @@ class reviewController {
       createdAt: Date.now()
     };
     if (businessid > businesses.length || businessid <= 0) {
-      return res.status(401).json({
-        message: 'Business not registered'
-      });
+      return res.status(401).json({ message: 'Business not registered' });
     }
     if (userId > users.length || userId <= 0) {
-      return res.status(401).json({
-        message: 'Kindly register in order comment'
-      });
+      return res.status(401).json({ message: 'Kindly register in order comment' });
     }
-
     reviews.push(review);
     if (reviews.length > oldreviewLength) {
       return res.status(201).json(reviews);
@@ -56,9 +51,7 @@ class reviewController {
     const businessId = parseInt(req.params.businessId, 10);
     const totalBusinesses = businesses.length;
     if (businessId > totalBusinesses) {
-      return res.status(404).json({
-        message: 'Business does not exist'
-      });
+      return res.status(404).json({ message: 'Business does not exist' });
     }
     const businessReview = reviews.filter(element => element.businessId === businessId);
     return res.status(302).json(businessReview);
