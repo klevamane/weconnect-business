@@ -1,4 +1,3 @@
-import winston from 'winston';
 import businesses from '../model/businessModel';
 
 /**
@@ -25,7 +24,6 @@ class businessController {
       url,
       category
     };
-    //   const result = (businesses.find(element => element.name === name));
     const result = [];
     for (let i = 0; i < businesses.length; i += 1) {
       if (businesses[i].name === newBusiness.name) {
@@ -35,7 +33,6 @@ class businessController {
     if (result > 0) {
       return res.status(302).json({ msg: 'Business name already exist' });
     }
-
     businesses.push(newBusiness);
     return res.status(201).json({
       message: 'Business has been registered', newBusiness: businesses[businesses.length - 1]
