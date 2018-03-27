@@ -24,6 +24,9 @@ class businessController {
       url,
       category
     };
+    if (!req.body.name || !req.body.location) {
+      return res.status(406).json({ message: 'Business must have a name, category and Location' });
+    }
     const result = (businesses.find(element => element.name === newBusiness.name));
     if (result) {
       return res.status(302).json({ msg: 'Business name already exist' });
@@ -96,7 +99,7 @@ class businessController {
     if (userStatus === false) {
       return res.status(401).json({
         message: 'Only business owner can delete a business',
-        error: false
+        error: true
       });
     }
     businesses.splice(businessPosition, 1);
