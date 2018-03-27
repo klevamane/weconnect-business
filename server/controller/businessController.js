@@ -1,47 +1,43 @@
 import businesses from '../model/businessModel';
 
 /**
-     * @class businessController
-     * @classdesc creates a usercontroller class with methods
-     */
+  * @class businessController
+  * @classdesc creates a usercontroller class with methods
+  */
 class businessController {
-  /**
-     * Register a new business on the platform
-     * @static
-     * @description create a new busines
-     * @param  {object} req gets values passed to the api
-     * @param  {object} res sends result as output
-     * @returns {object} Success message with the business created or error message
-     * @memberOf
-     */
+  /** @description create a new busines
+    * @param  {object} req gets values passed to the api
+    * @param  {object} res sends result as output
+    * @returns {object} Success message with the business created or error message
+    */
   static createBusiness(req, res) {
+    const {
+      name, address1, location, mobile, description, url, category
+    } = req.body;
     const newBusiness = {
       id: businesses.length + 1,
-      name: req.body.name,
-      address: req.body.address,
-      location: req.body.location,
-      mobile: req.body.mobile,
-      description: req.body.description,
-      url: req.body.url,
-      createdAt: Date.now(),
-      updatedAt: Date.now()
+      name,
+      address1,
+      location,
+      mobile,
+      description,
+      url,
+      category
     };
+    const result = (businesses.find(element => element.name === newBusiness.name));
+    if (result) {
+      return res.status(302).json({ msg: 'Business name already exist' });
+    }
     businesses.push(newBusiness);
-    const position = businesses.length - 1;
-    const createdBusiness = businesses[position];
-    return res.status(201).json({
-      message: 'Business has been registerd',
-      createdBusiness
-    });
+    return res.status(201).json({ message: 'Business has been registered', newBusiness: businesses[businesses.length - 1] });
   }
 
-  /**
-       * @static
-       * @description Makes changes to registerd business
-       * @param  {object} req gets values passed to the api
-       * @param  {object} res sends result as output
-       * @returns {object} Success message with the business updated or error message
-       */
+  /** @static
+    * @description Makes changes to registerd business
+    * @param  {object} req gets values passed to the api
+    * @param  {object} res sends result as output
+    * @returns {object} Success message with the business updated or error message
+    */
   static updateBusiness(req, res) {
     let userStatus = false;
     let businessPosition;
@@ -130,7 +126,6 @@ class businessController {
           locationArray.push(businesses[i]);
         }
       }
-
       if (locationArray.length > 0) {
         return res.status(200).json({
           locationArray
@@ -148,7 +143,6 @@ class businessController {
           cateogryArray.push(businesses[i]);
         }
       }
-
       if (cateogryArray.length > 0) {
         return res.status(200).json({ cateogryArray });
       }
@@ -165,13 +159,12 @@ class businessController {
   }
 
 
-  /**
-       * @static
-       * @description List a businesses by Id
-       * @param  {object} req gets values passed to the api
-       * @param  {object} res sends result as output
-       * @returns {object} Success message with the business object or no business available
-       */
+  /** @static
+    * @description List a businesses by Id
+    * @param  {object} req gets values passed to the api
+    * @param  {object} res sends result as output
+    * @returns {object} Success message with the business object or no business available
+    */
   static getBusinessById(req, res) {
     const business = [];
     const paramId = parseInt(req.params.businessId, 10);
@@ -184,7 +177,6 @@ class businessController {
       return res.status(302).json({
         message: 'Business Details',
         business
-
       });
     }
     return res.status(400).json({
