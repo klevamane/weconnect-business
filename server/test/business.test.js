@@ -37,7 +37,7 @@ describe('/DELETE/:businessId', () => {
       });
   });
 
-  it('should have a message', (done) => {
+  it('should have a message property', (done) => {
     const businessId = 1;
     chai.request(app)
       .delete(`/api/v1/businesses/${businessId}`)
@@ -67,10 +67,19 @@ it('should return {} if string is passed as an Id', (done) => {
     });
 });
 // POST
-describe('POST Business', () => {
-  it('should return 204 status code if business is created', (done) => {
+  it('should return 201 status code if business is created', (done) => {
+    const newBusiness = {
+      id: 3,
+      name: 'businessname',
+      location: 'aba',
+      mobile: '08025786657',
+      description: 'This is the description',
+      url: 'www.eand.com',
+      category: 'IT'
+    };
     chai.request(app)
       .post('/api/v1/businesses')
+      .send(newBusiness)
       .end((err, res) => {
         expect(res).to.have.status(201);
         done();
@@ -78,10 +87,21 @@ describe('POST Business', () => {
   });
 
   it('should return Business has been registered', (done) => {
+    const newBusiness = {
+      id: 3,
+      name: 'businessnamenew',
+      location: 'aba',
+      address1: 'Theaddressofthebusiness',
+      mobile: '08179578665',
+      description: 'Thisisthedescription',
+      url: 'njjkj',
+      category: 'IT'
+    };
     chai.request(app)
       .post('/api/v1/businesses')
+      .send(newBusiness)
       .end((err, res) => {
-        expect(res.body.message).to.equal('Business has been registerd');
+        expect(res.body.message).to.equal('Business has been registered');
         done();
       });
   });
