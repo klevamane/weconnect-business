@@ -84,7 +84,6 @@ class businessController {
   static deleteBusiness(req, res) {
     let userStatus = false;
     let businessPosition;
-    // let deletedBusiness;
     const businessOwner = 1;
     const paramId = parseInt(req.params.businessId, 10);
     for (let i = 0; i < businesses.length; i += 1) {
