@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/klevamane/weconnect-business.svg?branch=develop)](https://travis-ci.org/klevamane/weconnect-business) [![Coverage Status](https://coveralls.io/repos/github/klevamane/weconnect-business/badge.svg?branch=develop)](https://coveralls.io/github/klevamane/weconnect-business?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/85bfcac789b904e3491c/maintainability)](https://codeclimate.com/github/klevamane/weconnect-business/maintainability)
+[![Build Status](https://travis-ci.org/klevamane/weconnect-business.svg?branch=develop)](https://travis-ci.org/klevamane/weconnect-business) [![Coverage Status](https://coveralls.io/repos/github/klevamane/weconnect-business/badge.svg?branch=develop)](https://coveralls.io/github/klevamane/weconnect-business?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/85bfcac789b904e3491c/maintainability)](https://codeclimate.com/github/klevamane/weconnect-business/maintainability)[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+
 
 
 # WEconnect
