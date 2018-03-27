@@ -24,19 +24,12 @@ class businessController {
       url,
       category
     };
-    const result = [];
-    for (let i = 0; i < businesses.length; i += 1) {
-      if (businesses[i].name === newBusiness.name) {
-        result.push(businesses[i]);
-      }
-    }
-    if (result > 0) {
+    const result = (businesses.find(element => element.name === newBusiness.name));
+    if (result) {
       return res.status(302).json({ msg: 'Business name already exist' });
     }
     businesses.push(newBusiness);
-    return res.status(201).json({
-      message: 'Business has been registered', newBusiness: businesses[businesses.length - 1]
-    });
+    return res.status(201).json({ message: 'Business has been registered', newBusiness: businesses[businesses.length - 1] });
   }
 
   /** @static

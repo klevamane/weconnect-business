@@ -5,7 +5,7 @@ import app from '../app';
 const { expect } = chai;
 chai.use(chaiHttp);
 // CREATE
-describe('POST /user', () => {
+describe('POST USER /user', () => {
   it('should create a new user', (done) => {
     const user = {
       id: '',
@@ -63,6 +63,7 @@ describe('POST /user', () => {
       });
   });
 });
+
 describe('POST /auth/login', () => {
   it('should authenticate a registered user', (done) => {
     const user = {

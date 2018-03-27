@@ -7,18 +7,19 @@ import users from '../model/userModel';
      */
 class reviewController {
   /**
-     * Create Business Review
-     * @static
-     * @description create review for a registered business
-     * @param  {object} req gets values passed to the api
-     * @param  {object} res sends result as output
-     * @returns {object} Success message with the user created or error message
-     * @memberOf
-     */
+    * @static
+    * @description create review for a registered business
+    * @param  {object} req gets values passed to the api
+    * @param  {object} res sends result as output
+    * @returns {object} Success message with the user created or error message
+    */
   static createReview(req, res) {
     const oldreviewLength = reviews.length;
     const businessid = parseInt(req.params.businessId, 10);
     const userId = 2;
+    if (businessid > businesses.length || businessid <= 0) {
+      return res.status(401).json({ message: 'Business not registered' });
+    }
     const review = {
       id: reviews.length + 1,
       userId,
@@ -26,9 +27,6 @@ class reviewController {
       comment: req.body.comment,
       createdAt: Date.now()
     };
-    if (businessid > businesses.length || businessid <= 0) {
-      return res.status(401).json({ message: 'Business not registered' });
-    }
     if (userId > users.length || userId <= 0) {
       return res.status(401).json({ message: 'Kindly register in order comment' });
     }
