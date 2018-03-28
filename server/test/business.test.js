@@ -18,11 +18,21 @@ describe('/DELETE/:businessId', () => {
 
 
   it('should return message: Business has been deleted', (done) => {
-    const businessId = 1;
+    const businessId = 7;
     chai.request(app)
       .delete(`/api/v1/businesses/${businessId}`)
       .end((err, res) => {
         expect(res.body.message).to.equal('Only business owner can delete a business');
+        done();
+      });
+  });
+
+  it('should return false error', (done) => {
+    const businessId = 7;
+    chai.request(app)
+      .delete(`/api/v1/businesses/${businessId}`)
+      .end((err, res) => {
+        expect(res.body.error).to.equal(true);
         done();
       });
   });
@@ -65,6 +75,16 @@ describe('/DELETE/:businessId', () => {
         done();
       });
   });
+
+  it('should delete a business', (done) => {
+    const businessId = 1;
+    chai.request(app)
+      .delete(`/api/v1/businesses/${businessId}`)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
 });
 
 // POST
@@ -87,6 +107,46 @@ describe('POST Business /:businessId', () => {
         done();
       });
   });
+
+  it('should return 406 Not Acceptable status code', (done) => {
+    const newBusiness = {
+      id: 3,
+      name: '',
+      location: 'aba',
+      mobile: '08025786657',
+      description: 'This is the description',
+      url: 'www.eand.com',
+      category: 'IT'
+    };
+    chai.request(app)
+      .post('/api/v1/businesses')
+      .send(newBusiness)
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        done();
+      });
+  });
+
+  it('should return Business must have a name, category and Location', (done) => {
+    const newBusiness = {
+      id: 3,
+      name: 'name',
+      location: '',
+      mobile: '08025786657',
+      description: 'This is the description',
+      url: 'www.eand.com',
+      category: 'IT'
+    };
+    chai.request(app)
+      .post('/api/v1/businesses')
+      .send(newBusiness)
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('Business must have a name, category and Location');
+        done();
+      });
+  });
+
 
   it('should return Business has been registered', (done) => {
     const newBusiness = {

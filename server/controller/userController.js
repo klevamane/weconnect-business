@@ -22,6 +22,9 @@ class usercontroller {
       createdAt: Date.now(),
       updatedAt: Date.now()
     };
+    if (!req.body.firstname || !req.body.lastname || !req.body.email) {
+      return res.status(406).json({ message: 'firstname, lastname and email are required' });
+    }
     users.push(newuser);
     const position = users.length - 1;
     const registerdUser = users[position];
