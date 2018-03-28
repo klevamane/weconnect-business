@@ -239,7 +239,6 @@ describe('/GET By ID/:businessId', () => {
         const responseBody = res.body;
         const responseSize = Object.keys(responseBody).length;
         expect(responseSize).to.be.above(0);
-        expect(res.body).to.have.status(302);
         done();
       });
   });
