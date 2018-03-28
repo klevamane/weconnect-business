@@ -17,7 +17,7 @@ class reviewController {
     const oldreviewLength = reviews.length;
     const businessid = parseInt(req.params.businessId, 10);
     const userId = 2;
-    if (businessid > businesses.length || businessid <= 0) {
+    if (businessid > businesses.length || businessid < 1) {
       return res.status(401).json({ message: 'Business not registered' });
     }
     const review = {

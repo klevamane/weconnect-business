@@ -23,7 +23,7 @@ describe('POST REVIEW /business / review', () => {
       });
   });
   it('it should return 401 (Unauthorized) status code', (done) => {
-    const businessId = 5;
+    const businessId = 6;
     chai.request(app)
       .post(`/api/v1/businesses/${businessId}/reviews`)
       .end((err, res) => {

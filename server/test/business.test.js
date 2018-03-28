@@ -226,8 +226,8 @@ describe('/GET By ID/:businessId', () => {
       .end((err, res) => {
         const responseBody = res.body;
         const responseSize = Object.keys(responseBody).length;
-        // also returns the message property so value = 1
         expect(responseSize).to.not.be.above(1);
+        expect(res).to.have.status(400);
         done();
       });
   });
@@ -250,6 +250,51 @@ describe('/GET By ID/:businessId', () => {
         const responseBody = res.body;
         const responseSize = Object.keys(responseBody).length;
         expect(responseSize).to.be.a('number');
+        done();
+      });
+  });
+});
+
+describe('/GET BUSINESSES BY LOCATION', () => {
+  it('should Return an object', (done) => {
+    const location = 'bayelsa';
+    chai.request(app)
+      .get(`/api/v1/businesses?location=${location}`)
+      .end((err, res) => {
+        expect(res).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should Return id property = 2', (done) => {
+  //  const location = 'rivers';
+    chai.request(app)
+      .get('/api/v1/businesses?location=rivers')
+      .end((err, res) => {
+        expect(res.body.locationArray[0]).to.have.property('id');
+        expect(res.body.locationArray[0]).to.have.property('ownerId');
+        expect(res.body.locationArray[0]).to.have.property('mobile');
+        expect(res.body.locationArray[0]).to.have.property('category');
+        done();
+      });
+  });
+});
+
+// CATEGORY
+describe('/GET By Business by CATEGORY filter', () => {
+  it('Should get a business', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?category=Medicine')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('Should not GET a business', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?category=Mediciner')
+      .end((err, res) => {
+        expect(res).to.have.status(400);
         done();
       });
   });
