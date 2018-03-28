@@ -185,6 +185,7 @@ describe('/GET Business/', () => {
       .get('/api/v1/businesses')
       .end((err, res) => {
         expect(res).to.have.status(200);
+        expect(res.body.businesses[0]).to.have.property('id');
         done();
       });
   });
