@@ -27,7 +27,7 @@ class businessController {
     if (!req.body.name || !req.body.location) {
       return res.status(406).json({ message: 'Business must have a name, category and Location' });
     }
-    const result = (businesses.find(element => element.name === newBusiness.name));
+    const result = (businesses.find(business => business.name === newBusiness.name));
     if (result) {
       return res.status(302).json({ msg: 'Business name already exist' });
     }

@@ -1,2 +1,4 @@
 node_modules
 ./server/routes/sandboxroute.js
+vscode
+.nyc_output
