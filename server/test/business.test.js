@@ -234,11 +234,12 @@ describe('/GET By ID/:businessId', () => {
 
   it('Number of businesses should be 1', (done) => {
     chai.request(app)
-      .get(`/api/v1/businesses/${1}`)
+      .get('/api/v1/businesses/1')
       .end((err, res) => {
         const responseBody = res.body;
         const responseSize = Object.keys(responseBody).length;
         expect(responseSize).to.be.above(0);
+        expect(res.body).to.have.status(302);
         done();
       });
   });

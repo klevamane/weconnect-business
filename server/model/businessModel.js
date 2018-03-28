@@ -45,7 +45,7 @@ const businesses = [
 
   {
     id: 4,
-    name: 'trinity',
+    name: 'trinitynew',
     address1: '1721 Bode road, old town, port-harcourt',
     location: 'rivers',
     mobile: '07031156643',

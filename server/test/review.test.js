@@ -15,7 +15,7 @@ describe('POST REVIEW /business / review', () => {
       businessId: 1,
     };
     chai.request(app)
-      .post('/api/v1/businesses/:businessId/reviews')
+      .post('/api/v1/businesses/1/reviews')
       .send(review)
       .end((err, res) => {
         expect(res).to.have.status(201);
