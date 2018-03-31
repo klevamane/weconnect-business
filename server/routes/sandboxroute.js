@@ -1,48 +1,70 @@
-/* import express, { Router } from 'express';
+ import winston from 'winston';
+// let maintext = 'welcome';
+// let newstr = '';
+// for(let i = maintext.length-1; i>=0; i = i-1) {
+//   newstr += maintext[i];
+// }
+// let sumOfMultiples = 0;
+// for(let i =5; i<=100; i++) {
+//   if(i%5 === 0) {
+//     sumOfMultiples += i;
+//   }
+// }
 
-
-const router = express.Router();
-
-*/
-// import { check } from 'express-validator/check';
-// import winston from 'winston';
-// import businesses from '../model/businessModel';
-
-// const businessId = 1;
-// const result = businesses.find(element => element.id === businessId);
-// const numberOfKeys = Object.keys(businesses).length;
-// winston.info(result);
-// winston.info(numberOfKeys);
-
-// const myobject = {
-//   id: 1,
-//   name: 2
-// };
-// const myarr = [];
-// myarr.push(myobject);
-// winston.info(myarr.length);
-import winston from 'winston';
-import businesses from '../model/businessModel';
-
-const newBusiness = {
-  id: 4,
-  name: 'WayneNlucian',
-  location: 'aba',
-  mobile: '08025786657',
-  description: 'Thisisthedescription',
-  url: 'www.eand.com',
-  category: 'IT'
-};
-const anotherArray = [];
-const newArray = ['string', 'again'];
-
-const result = (businesses.find(element => element.name === newBusiness.name));
-for (let i = 0; i < businesses.length; i += 1) {
-  if (businesses[i].name === newBusiness.name) {
-    anotherArray.push(businesses[i]);
-  }
+const states = [
+  "Abia",
+  "Adamawa",
+  "Anambra",
+  "AkwaIbom",
+  "Bauchi",
+  "Bayelsa",
+  "Benue",
+  "Borno",
+  "CrossRiver",
+  "Delta",
+  "Ebonyi",
+  "Enugu",
+  "Edo",
+  "Ekiti",
+  "Gombe",
+  "Imo",
+  "Jigawa",
+  "Kaduna",
+  "Kano",
+  "Katsina",
+  "Kebbi",
+  "Kogi",
+  "Kwara",
+  "Lagos",
+  "Nasarawa",
+  "Niger",
+  "Ogun",
+  "Ondo",
+  "Osun",
+  "Oyo",
+  "Plateau",
+  "Rivers",
+  "Sokoto",
+  "Taraba",
+  "Yobe",
+  "Zamfara"
+];
+let newObj = {}
+for(let i = 0; i <states.length; i++) {
+  let number = states[i].length;
+  newObj[states[i]] = states[i].length;
 }
-winston.info(result);
-winston.info(newArray);
-winston.info(anotherArray);
-winston.info(anotherArray.length);
+
+var items = Object.keys(newObj).map(function(key) {
+  return [key, newObj[key]];
+});
+
+// Sort the array based on the second element
+items.sort(function(first, second) {
+  return second[1] - first[1];
+});
+
+// Create a new array with only the first 5 items
+console.log(items.slice(0, 35));
+
+//winston.info(newObj);
