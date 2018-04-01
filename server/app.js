@@ -16,12 +16,25 @@ app.use(logger('dev'));
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Handling CORS Error
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-width, Content-Type, Accept, Authorization');
+  // Browser always sends options first
+  // When a POST or PUT request is sent
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, DELETE, GET');
+    res.status(200).json({});
+  }
+  next();
+});
+
 // Call express validator after body parser middleware
 // because it uses the passed values
 app.use(expressValidator());
-// Middleware implementing user routes
+
 app.use('/api/v1/auth', userRoutes);
-// Middleware for business routes
 app.use('/api/v1/businesses', businessRoutes);
 
 app.get('*', (req, res, next) => {
