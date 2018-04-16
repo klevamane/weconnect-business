@@ -1,4 +1,9 @@
+import Sequelize from 'sequelize';
 import users from '../model/userModel';
+import models from '../models';
+
+const Op = Sequelize.Op;
+const { User } = models;
 /**
      * @class usercontroller
      * @classdesc creates a usercontroller class with methods
@@ -14,25 +19,28 @@ class usercontroller {
      * @memberOf
      */
   static createUser(req, res) {
-    const newuser = {
-      id: users.length + 1,
-      email: req.body.email,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      createdAt: Date.now(),
-      updatedAt: Date.now()
-    };
     if (!req.body.firstname || !req.body.lastname || !req.body.email) {
       return res.status(406).json({ message: 'firstname, lastname and email are required' });
     }
-    users.push(newuser);
-    const position = users.length - 1;
-    const registerdUser = users[position];
-    return res.status(200).json({
-      message: 'User has been registered',
-      registerdUser
+    User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then((userAlreadyExist) => {
+      if (userAlreadyExist) {
+        return res.status(400).json({ message: 'Email already exist' });
+      }
+      User.create({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password
+      })
+        .then(newUser => res.status(201).send(newUser))
+        .catch(error => res.status(400).send(error));
     });
   }
+
   /**
      * @static
      * @description A registered user will be authenticated to gain access to the application
@@ -42,18 +50,20 @@ class usercontroller {
      * @memberOf
      */
   static userLogin(req, res) {
-    const verifyEmail = req.body.email;
-    const verifyPassword = req.body.password;
-    for (let i = 0; i < users.length; i += 1) {
-      if (users[i].password === verifyPassword && users[i].email === verifyEmail) {
-        return res.status(202).json({
-          message: 'Valid user'
-        });
+    // const verifyEmail = req.body.email;
+    User.findOne({
+      where: {
+        email: req.body.email,
+        [Op.and]: { password: req.body.password }
       }
-    }
-    return res.status(401).json({
-      message: 'Wrong login credentials',
-    });
+    })
+      .then((authenticatedUser) => {
+        if (!authenticatedUser) {
+          return res.status(401).json({ message: 'Invalid email or password' });
+        }
+        res.status(200).json({ message: 'User has been authenticated' });
+      })
+      .catch(error => res.status(400).send(error));
   }
 }
 export default usercontroller;
