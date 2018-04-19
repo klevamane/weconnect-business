@@ -1,6 +1,9 @@
 import reviews from '../model/reviewModel';
 import businesses from '../model/businessModel';
 import users from '../model/userModel';
+import models from '../models';
+
+const { Review } = models;
 /**
      * @class revieController
      * @classdesc creates a review class with methods
@@ -14,26 +17,25 @@ class reviewController {
     * @returns {object} Success message with the user created or error message
     */
   static createReview(req, res) {
-    const oldreviewLength = reviews.length;
-    const businessid = parseInt(req.params.businessId, 10);
-    const userId = 2;
-    if (businessid > businesses.length || businessid < 1) {
-      return res.status(401).json({ message: 'Business not registered' });
-    }
-    const review = {
-      id: reviews.length + 1,
-      userId,
-      businessId: parseInt(req.params.businessId, 10),
+    Review.create({
       comment: req.body.comment,
-      createdAt: Date.now()
-    };
-    if (userId > users.length || userId <= 0) {
-      return res.status(401).json({ message: 'Kindly register in order comment' });
-    }
-    reviews.push(review);
-    if (reviews.length > oldreviewLength) {
-      return res.status(201).json(reviews);
-    }
+      UserId: req.body.userId,
+      BussinessId: req.params.businessId
+    }).then((newReview) => {
+      if (!newReview) {
+        // Return something, could not add review
+        return res.status(400).json({
+          message: 'Review could not be added'
+        });
+      }
+      // Return all reviews for the particular business
+      Review.findAll({
+        where: {
+          BusinessId: req.body.bussinessId
+        }
+      }).then(businessReviews => res.status(200).json(businessReviews))
+        .catch(error => res.status(400).send(error));
+    }).catch(error => res.status(400).send(error));
   }
 
   /**

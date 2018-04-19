@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Location.associate = (models) => {
     // associations can be defined here
     Location.hasMany(models.Business, {
-      foreignKey: 'locationId',
+      foreignKey: 'LocationId',
       onDelete: 'CASCADE'
     });
   };

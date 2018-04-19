@@ -7,7 +7,7 @@ import { checkLocation, checkCategory, checkMobile, checkBusinessName } from '..
 const routes = express.Router();
 
 routes.post(
-  '/', checkBusinessName, checkCategory, checkLocation, checkMobile,
+  '/', checkBusinessName, checkMobile,
   businesscontroller.createBusiness
 );
 routes.get('/', businesscontroller.getAllBusinesses);
