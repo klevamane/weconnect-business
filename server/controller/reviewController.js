@@ -1,9 +1,7 @@
-import reviews from '../model/reviewModel';
-import businesses from '../model/businessModel';
-import users from '../model/userModel';
 import models from '../models';
+import { checkifBusinessExist } from '../helper/utils';
 
-const { Review } = models;
+const { Review, Business } = models;
 /**
      * @class revieController
      * @classdesc creates a review class with methods
@@ -17,6 +15,11 @@ class reviewController {
     * @returns {object} Success message with the user created or error message
     */
   static createReview(req, res) {
+    const checkBusiness = checkifBusinessExist(req.params.businessId);
+    // console.log(checkBusiness);
+    if (checkBusiness === false) {
+      return res.status(404).json({ message: 'Review cannot be added to a business that does not exist!' });
+    }
     Review.create({
       comment: req.body.comment,
       UserId: req.body.userId,
@@ -28,13 +31,25 @@ class reviewController {
           message: 'Review could not be added'
         });
       }
+      return res.status(200).json({ message: 'Review has been succesfully added' });
       // Return all reviews for the particular business
-      Review.findAll({
-        where: {
-          BusinessId: req.body.bussinessId
+      // Review.findAll({
+      //   where: {
+      //     BusinessId: req.body.bussinessId
+      //   }
+      // }).then(businessReviews => res.status(200).json(businessReviews))
+      //   .catch(error => res.status(400).send(error));
+      /* Business.findOne({
+        include: [{
+          model: Review,
+          where: { BusinessId: req.params.businessId }
+        }]
+      }).then((businessReviews) => {
+        if (!businessReviews) {
+          return res.status(400).json({ message: 'Could not display reviews ' });
         }
-      }).then(businessReviews => res.status(200).json(businessReviews))
-        .catch(error => res.status(400).send(error));
+        return res.status(200).json(businessReviews);
+      }); */
     }).catch(error => res.status(400).send(error));
   }
 
@@ -48,13 +63,25 @@ class reviewController {
      * @memberOf
      */
   static getBusinessReviews(req, res) {
-    const businessId = parseInt(req.params.businessId, 10);
-    const totalBusinesses = businesses.length;
-    if (businessId > totalBusinesses) {
-      return res.status(404).json({ message: 'Business does not exist' });
+    // Todo: Validate req.params.businessId and sanitize
+    const checkBusiness = checkifBusinessExist(req.params.businessId);
+    if (checkBusiness === false) {
+      return res.status(404).json({ message: 'Review cannot be displayed for a business that does not exist!' });
     }
-    const businessReview = reviews.filter(element => element.businessId === businessId);
-    return res.status(302).json(businessReview);
+    Review.findAll({
+      where: {
+        BusinessId: req.params.businessId
+      }
+    }).then((businessReviews) => {
+      if (!businessReviews) {
+        return res.status(204).json({ message: 'No content to be displayed' });
+      }
+      res.staus(302).json({
+        message: 'List of all reviews for this business',
+        businessReviews
+      });
+    })
+      .catch(error => res.status(400).send(error));
   }
 }
 export default reviewController;

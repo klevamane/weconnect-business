@@ -1,5 +1,5 @@
 import models from '../models';
-import {checkifBusinessExist} from '../helper/utils';
+import { checkifBusinessExist } from '../helper/utils';
 
 const { Business } = models;
 
