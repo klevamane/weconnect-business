@@ -20,6 +20,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       UserId: {
+        allowNull: false,
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references: {
@@ -28,6 +29,7 @@ module.exports = {
         }
       },
       BusinessId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {

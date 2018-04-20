@@ -23,7 +23,7 @@ class reviewController {
     Review.create({
       comment: req.body.comment,
       UserId: req.body.userId,
-      BussinessId: req.params.businessId
+      BusinessId: req.params.businessId
     }).then((newReview) => {
       if (!newReview) {
         // Return something, could not add review

@@ -8,6 +8,7 @@
     "test-dev": "mocha ./server/test --exit --compilers js:babel-register --timeout 20000",
     "start": "babel-node ./server/app.js",
     "dev": "babel-node ./server/app.js",
+    "code": "nodemon --watch src ./server/app.js --exec babel-node --preset env",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "check-coverage": "nyc check-coverage --lines 70 --per-file",

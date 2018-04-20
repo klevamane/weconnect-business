@@ -77,12 +77,13 @@ class businessController {
        * @returns {object} Success message with the business updated or error message
        */
   static deleteBusiness(req, res) {
-    // Todo: check first if business to be deleted exist
+    // check first if business to be deleted exist
     const checkBusiness = checkifBusinessExist(req.params.businessId);
     // console.log(checkBusiness);
     if (checkBusiness === false) {
       return res.status(404).json({ message: 'The business to be deleted does not exist! latest' });
     }
+    // Todo: check if the business it to be deleted by the business owner
     Business.destroy({
       where: {
         id: req.params.businessId
