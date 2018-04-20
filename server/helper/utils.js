@@ -15,3 +15,12 @@ exports.checkifBusinessExist = (id) => {
   }).catch(error => error);
 };
 
+exports.checkSequelizeError = (errorTocheck, key, res) => {
+  if (errorTocheck === 'SequelizeUniqueConstraintError') {
+    return res.status(400).json({
+      message: `${key} is already in use calling from utils`,
+      err: true
+    });
+  }
+};
+

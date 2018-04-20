@@ -1,5 +1,7 @@
+// import winston from 'winston';
+// import Sequelize from 'sequelize';
 import models from '../models';
-import { checkifBusinessExist } from '../helper/utils';
+import { checkifBusinessExist, checkSequelizeError } from '../helper/utils';
 
 const { Business } = models;
 
@@ -39,6 +41,15 @@ class businessController {
             message: 'Business has been successfully created',
             newBusiness
           }))
+          .catch((error) => {
+            // check for sequelize error, also pass the name of the error
+            // and the property (path) that caused the error to be raised
+            // res is to the calling function to enable returning status and JSON
+            // checkSequelizeError(error.name, error.errors[0].path, res);
+            if (error.name === 'SequelizeUniqueConstraintError') {
+              return res.status(409).json({ message: `${error.errors[0].path} is already in use` });
+            }
+          })
           .catch(error => res.status(400).send(error));
       });
   }
@@ -66,9 +77,13 @@ class businessController {
       }
     )
       .then(res.status(201).json({ message: 'Business has been successfully updated' }))
-      .catch(error => res.status(400).send(error));
+      .catch((error) => {
+        if (error.name === 'SequelizeUniqueConstraintError') {
+          return res.status(409).json({ message: `${error.errors[0].path} is already in use` });
+        }
+        res.status(400).send(error);
+      });
   }
-
   /**
        * @static
        * @description Deletes a business
@@ -93,7 +108,7 @@ class businessController {
         if (deletedBusiness !== 1) {
           return res.status(404).json({ message: 'The business to be deleted does not exist!' });
         }
-        return res.status(200).json({ 
+        return res.status(200).json({
           message: 'Business has been succesfully deleted',
           thetype: typeof deletedBusiness,
           deletedBusiness
