@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import Sequelize from 'sequelize';
 import users from '../model/userModel';
 import models from '../models';
@@ -30,14 +31,19 @@ class usercontroller {
       if (userAlreadyExist) {
         return res.status(400).json({ message: 'Email already exist' });
       }
-      User.create({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        password: req.body.password
-      })
-        .then(newUser => res.status(201).send(newUser))
-        .catch(error => res.status(400).send(error));
+      bcrypt.hash(req.body.password, 10, (err, hash) => {
+        if (err) {
+          return res.status(500).json({ error: err });
+        }
+        User.create({
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          email: req.body.email,
+          password: hash
+        })
+          .then(newUser => res.status(201).send(newUser))
+          .catch(error => res.status(400).send(error));
+      });
     });
   }
 
