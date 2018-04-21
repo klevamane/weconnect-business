@@ -1,7 +1,7 @@
 // import winston from 'winston';
 // import Sequelize from 'sequelize';
 import models from '../models';
-import { checkifBusinessExist, checkSequelizeError } from '../helper/utils';
+import { checkifBusinessExist } from '../helper/utils';
 
 const { Business } = models;
 
@@ -118,12 +118,12 @@ class businessController {
   }
 
   /**
-       * @static
-       * @description List all businesses
-       * @param  {object} req gets values passed to the api
-       * @param  {object} res sends result as output
-       * @returns {object} Success message with the business list or error message
-       */
+  * @static
+  * @description List all registered businesses
+  * @param  {object} req gets values passed to the api
+  * @param  {object} res sends result as output
+  * @returns {object} Success message with the business list or error message
+  */
   static getAllBusinesses(req, res) {
     const { location, category } = req.query;
     if (location) {
@@ -165,11 +165,11 @@ class businessController {
   }
 
   /** @static
-    * @description List a businesses by Id
-    * @param  {object} req gets values passed to the api
-    * @param  {object} res sends result as output
-    * @returns {object} Success message with the business object or no business available
-    */
+  * @description List a businesses by Id
+  * @param  {object} req gets values passed to the api
+  * @param  {object} res sends result as output
+  * @returns {object} Success message with the business object or no business available
+  */
   static getBusinessById(req, res) {
     Business.findOne({
       // Return only selected properties specified in attributes
@@ -187,5 +187,4 @@ class businessController {
       .catch(error => res.status(400).send(error));
   }
 }
-
 export default businessController;
