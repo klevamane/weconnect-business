@@ -3,6 +3,7 @@
 import models from '../models';
 import { checkifBusinessExist } from '../helper/utils';
 
+const Op = Sequelize.Op;
 const { Business } = models;
 
 /**
@@ -98,15 +99,15 @@ class businessController {
     if (checkBusiness === false) {
       return res.status(404).json({ message: 'The business to be deleted does not exist! latest' });
     }
-    // Todo: check if the business it to be deleted by the business owner
+    // check if the business is to be deleted by the business owner
     Business.destroy({
       where: {
-        id: req.params.businessId
+        [Op.and]: [{ id: req.params.businessId }, { UserId: req.decodedUserData.id }]
       }
     })
       .then((deletedBusiness) => {
         if (deletedBusiness !== 1) {
-          return res.status(404).json({ message: 'The business to be deleted does not exist!' });
+          return res.status(404).json({ message: 'You can only delete a business registered by you' });
         }
         return res.status(200).json({
           message: 'Business has been succesfully deleted',

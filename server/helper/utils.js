@@ -13,7 +13,7 @@ exports.checkifBusinessExist = (id) => {
     if (!businessIsAvailable) {
       return false;
     }
-    return true;
+    return businessIsAvailable.UserId;
   }).catch(error => error);
 };
 
@@ -36,6 +36,7 @@ exports.checkAuthentication = (req, res, next) => {
     // Add a new property to the request body
     req.decodedUserData = decoded;
     winston.info('User authenticated');
+    winston.info(decoded);
     next();
   } catch (error) {
     return res.status(401).json({

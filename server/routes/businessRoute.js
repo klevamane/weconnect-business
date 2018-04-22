@@ -13,7 +13,7 @@ routes.get('/', businesscontroller.getAllBusinesses);
 routes.get('/:businessId', businesscontroller.getBusinessById);
 routes.put('/:businessId', businesscontroller.updateBusiness);
 routes.delete('/:businessId', businesscontroller.deleteBusiness);
-routes.post('/:businessId/reviews', reviewController.createReview);
+routes.post('/:businessId/reviews', checkAuthentication, reviewController.createReview);
 routes.get('/:businessId/reviews', reviewController.getBusinessReviews);
 
 export default routes;
