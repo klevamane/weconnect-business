@@ -7,12 +7,11 @@ import { checkAuthentication } from '../helper/utils';
 
 const routes = express.Router();
 
-routes.post('/', checkAuthentication, checkBusinessName, checkMobile, businesscontroller.createBusiness
-);
+routes.post('/', checkAuthentication, checkBusinessName, checkMobile, businesscontroller.createBusiness);
 routes.get('/', businesscontroller.getAllBusinesses);
 routes.get('/:businessId', businesscontroller.getBusinessById);
-routes.put('/:businessId', businesscontroller.updateBusiness);
-routes.delete('/:businessId', businesscontroller.deleteBusiness);
+routes.put('/:businessId', checkAuthentication, businesscontroller.updateBusiness);
+routes.delete('/:businessId', checkAuthentication, businesscontroller.deleteBusiness);
 routes.post('/:businessId/reviews', checkAuthentication, reviewController.createReview);
 routes.get('/:businessId/reviews', reviewController.getBusinessReviews);
 

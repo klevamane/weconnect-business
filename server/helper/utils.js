@@ -10,7 +10,9 @@ exports.checkifBusinessExist = (id) => {
       id
     }
   }).then((businessIsAvailable) => {
-    if (!businessIsAvailable) {
+    winston(businessIsAvailable.length);
+    winston(businessIsAvailable);
+    if (!businessIsAvailable || businessIsAvailable.length < 1) {
       return false;
     }
     return businessIsAvailable.UserId;

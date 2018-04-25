@@ -1,7 +1,7 @@
-// import winston from 'winston';
-// import Sequelize from 'sequelize';
+import winston from 'winston';
+import Sequelize from 'sequelize';
 import models from '../models';
-import { checkifBusinessExist } from '../helper/utils';
+// import { checkifBusinessExist } from '../helper/utils';
 
 const Op = Sequelize.Op;
 const { Business } = models;
@@ -36,7 +36,7 @@ class businessController {
           description: req.body.description,
           url: req.body.url,
           CategoryId: req.body.categoryId,
-          UserId: req.body.userId
+          UserId: req.decodedUserData.id
         })
           .then(newBusiness => res.status(201).json({
             message: 'Business has been successfully created',
@@ -69,15 +69,20 @@ class businessController {
         description: req.body.description,
         url: req.body.url,
         CategoryId: req.body.categoryId,
-        UserId: req.body.userId
       },
       {
         where: {
-          id: req.params.businessId
+          id: req.params.businessId,
+          UserId: req.decodedUserData.id
         }
       }
-    )
-      .then(res.status(201).json({ message: 'Business has been successfully updated' }))
+    ).then((numberOfRowsUpdated) => {
+      winston.info(`showing updated business ${numberOfRowsUpdated}`);
+      if (numberOfRowsUpdated < 1) {
+        return res.status(304).json({ message: 'Update failed' });
+      }
+      res.status(206).json({ message: 'Business has been successfully updated' });
+    })
       .catch((error) => {
         if (error.name === 'SequelizeUniqueConstraintError') {
           return res.status(409).json({ message: `${error.errors[0].path} is already in use` });
@@ -93,29 +98,33 @@ class businessController {
        * @returns {object} Success message with the business updated or error message
        */
   static deleteBusiness(req, res) {
-    // check first if business to be deleted exist
-    const checkBusiness = checkifBusinessExist(req.params.businessId);
-    // console.log(checkBusiness);
-    if (checkBusiness === false) {
-      return res.status(404).json({ message: 'The business to be deleted does not exist! latest' });
-    }
-    // check if the business is to be deleted by the business owner
-    Business.destroy({
+    // check if business exist
+    Business.findOne({
       where: {
-        [Op.and]: [{ id: req.params.businessId }, { UserId: req.decodedUserData.id }]
+        id: req.params.businessId
       }
-    })
-      .then((deletedBusiness) => {
-        if (deletedBusiness !== 1) {
-          return res.status(404).json({ message: 'You can only delete a business registered by you' });
+    }).then((businessFound) => {
+      if (!businessFound) {
+        return res.status(200).json({ message: 'Busines not found' });
+      }
+      // if the business exist, ensure a user can only delete a business registered by the user
+      Business.destroy({
+        where: {
+          [Op.and]: [{ id: req.params.businessId }, { UserId: req.decodedUserData.id }]
         }
-        return res.status(200).json({
-          message: 'Business has been succesfully deleted',
-          thetype: typeof deletedBusiness,
-          deletedBusiness
-        });
       })
-      .catch(error => res.status(400).send(error));
+        .then((deletedBusiness) => {
+          if (deletedBusiness !== 1) {
+            return res.status(404).json({ message: 'You can only delete a business registered by you' });
+          }
+          return res.status(200).json({
+            message: 'Business has been succesfully deleted',
+            thetype: typeof deletedBusiness,
+            deletedBusiness
+          });
+        });
+    })
+      .catch(error => res.status(409).send(error));
   }
 
   /**
