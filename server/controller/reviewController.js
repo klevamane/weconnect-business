@@ -1,5 +1,7 @@
+import winston from 'winston';
 import models from '../models';
-import { checkifBusinessExist } from '../helper/utils';
+import { checkifBusinessExist, checkAuthentication, businessExistence } from '../helper/utils';
+
 
 const { Review, Business } = models;
 /**
@@ -15,42 +17,31 @@ class reviewController {
     * @returns {object} Success message with the user created or error message
     */
   static createReview(req, res) {
-    const checkBusiness = checkifBusinessExist(req.params.businessId);
-    // console.log(checkBusiness);
-    if (checkBusiness === false) {
-      return res.status(404).json({ message: 'Review cannot be added to a business that does not exist!' });
-    }
-    Review.create({
-      comment: req.body.comment,
-      UserId: req.decodedUserData.id,
-      BusinessId: req.params.businessId
-    }).then((newReview) => {
-      if (!newReview) {
-        // Return something, could not add review
-        return res.status(400).json({
-          message: 'Review could not be added'
-        });
+    
+    Business.findOne({
+      where: {
+        id: req.params.businessId
       }
-      return res.status(200).json({ message: 'Review has been succesfully added' });
-      // Return all reviews for the particular business
-      // Review.findAll({
-      //   where: {
-      //     BusinessId: req.body.bussinessId
-      //   }
-      // }).then(businessReviews => res.status(200).json(businessReviews))
-      //   .catch(error => res.status(400).send(error));
-      /* Business.findOne({
-        include: [{
-          model: Review,
-          where: { BusinessId: req.params.businessId }
-        }]
-      }).then((businessReviews) => {
-        if (!businessReviews) {
-          return res.status(400).json({ message: 'Could not display reviews ' });
+    })
+      .then((singleBusiness) => {
+        if (!singleBusiness) {
+          return res.status(300).json({ message: 'Business not found' });
         }
-        return res.status(200).json(businessReviews);
-      }); */
-    }).catch(error => res.status(400).send(error));
+        Review.create({
+          comment: req.body.comment,
+          UserId: req.decodedUserData.id,
+          BusinessId: req.params.businessId
+        })
+          .then((newReview) => {
+            if (!newReview) {
+              // Return something, if review could not be added
+              return res.status(400).json({
+                message: 'Review could not be added'
+              });
+            }
+            return res.status(200).json({ message: 'Review has been succesfully added' });
+          });
+      }).catch(error => res.status(400).send(error));
   }
 
   /**

@@ -10,15 +10,25 @@ exports.checkifBusinessExist = (id) => {
       id
     }
   }).then((businessIsAvailable) => {
-    winston(businessIsAvailable.length);
-    winston(businessIsAvailable);
-    if (!businessIsAvailable || businessIsAvailable.length < 1) {
+    if (!businessIsAvailable) {
       return false;
     }
     return businessIsAvailable.UserId;
   }).catch(error => error);
 };
 
+exports.businessExistence = (businessId) => {
+  Business.findOne({
+    where: {
+      id: businessId
+    }
+  }).then((businessIsAvailable) => {
+    if (!businessIsAvailable) {
+      return false;
+    }
+    return true;
+  }).catch(error => error);
+};
 exports.checkSequelizeError = (errorTocheck, key, res) => {
   if (errorTocheck === 'SequelizeUniqueConstraintError') {
     return res.status(400).json({
