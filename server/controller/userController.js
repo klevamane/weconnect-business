@@ -2,7 +2,6 @@ import winston from 'winston';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import Sequelize from 'sequelize';
-import users from '../model/userModel';
 import models from '../models';
 
 const Op = Sequelize.Op;
@@ -22,30 +21,18 @@ class usercontroller {
   * @memberOf
   */
   static createUser(req, res) {
-    if (!req.body.firstname || !req.body.lastname || !req.body.email) {
-      return res.status(406).json({ message: 'firstname, lastname and email are required' });
-    }
-    User.findOne({
-      where: {
-        email: req.body.email
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+      if (err) {
+        return res.status(500).json({ error: err });
       }
-    }).then((userAlreadyExist) => {
-      if (userAlreadyExist) {
-        return res.status(400).json({ message: 'Email already exist' });
-      }
-      bcrypt.hash(req.body.password, 10, (err, hash) => {
-        if (err) {
-          return res.status(500).json({ error: err });
-        }
-        User.create({
-          firstname: req.body.firstname,
-          lastname: req.body.lastname,
-          email: req.body.email,
-          password: hash
-        })
-          .then(newUser => res.status(201).send(newUser))
-          .catch(error => res.status(400).send(error));
-      });
+      User.create({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hash
+      })
+        .then(newUser => res.status(201).send(newUser))
+        .catch(error => res.status(400).send(error));
     });
   }
 
@@ -73,9 +60,9 @@ class usercontroller {
         // return res.status(200).json(authenticatedUser);
         bcrypt.compare(req.body.password, authenticatedUser.password, (err, result) => {
           if (result) {
-            // Ensure to put the secrete key in your environment variable
+            // Ensure to put the secretekey in your environment variable
             const token = jwt.sign({ id: authenticatedUser.id }, 'secreteKey', { expiresIn: '1h' });
-            return res.status(200).json({
+            return res.status(202).json({
               message: 'User has been authenticated',
               token
             });
@@ -95,7 +82,10 @@ class usercontroller {
   * @memberOf
   */
   static getAllUsers(req, res) {
-    User.findAll()
+    User.findAll({
+      // Return only selected properties specified in attributes
+      attributes: ['firstname', 'lastname', 'email', 'isactive', 'role', 'createdAt'],
+    })
       .then((allRegisteredUsers) => {
         if (!allRegisteredUsers) {
           return res.status(204).json({ message: 'Currently no registered user' });
@@ -103,6 +93,58 @@ class usercontroller {
         return res.status(302).json(allRegisteredUsers);
       })
       .catch(error => res.status(400).send(error));
+  }
+
+  /**
+  * @static
+  * @description List details of a single user
+  * @param  {object} req gets values passed to the api
+  * @param  {object} res sends result as output
+  * @returns {object} returns 204 status code if no user is found, and 302 if found
+  * @memberOf
+  */
+  static getUserById(req, res) {
+    User.findOne({
+      // Return only selected properties specified in attributes
+      attributes: ['firstname', 'lastname', 'email', 'isactive', 'role', 'createdAt'],
+      where: {
+        id: req.params.userId
+      }
+    })
+      .then((singleUser) => {
+        if (!singleUser) {
+          return res.status(204).json({ message: 'User does not exist' });
+        }
+        return res.status(302).json(singleUser);
+      })
+      .catch(error => res.status(400).send(error));
+  }
+
+  /**
+       * @static
+       * @description Deletes a User
+       * @param  {object} req gets values passed to the api
+       * @param  {object} res sends result as output
+       * @returns {object} Success message with the user deleted or error message
+       */
+  static deleteUser(req, res) {
+    User.destroy({
+      where: {
+        // [Op.and]: [{ id: req.params.businessId }, { UserId: req.decodedUserData.id }]
+        id: req.params.id
+      }
+    })
+      .then((deletedUser) => {
+        if (deletedUser !== 1) {
+          return res.status(400).json({ message: 'User was not deleted' });
+        }
+        return res.status(200).json({
+          message: 'User has been deleted',
+          thetype: typeof deletedUser,
+          deletedUser
+        });
+      })
+      .catch(error => res.status(409).send(error));
   }
 }
 export default usercontroller;

@@ -17,43 +17,22 @@ class businessController {
     * @returns {object} Success message with the business created or error message
     */
   static createBusiness(req, res) {
-    if (!req.body.name || !req.body.locationId || !req.body.categoryId) {
-      return res.status(406).json({ message: 'Business must have a name, category and Location' });
-    }
-    Business.findOne({
-      where: {
-        name: req.body.name
-      }
+    Business.create({
+      name: req.body.name,
+      LocationId: req.body.locationId,
+      mobile: req.body.mobile,
+      description: req.body.description,
+      url: req.body.url,
+      CategoryId: req.body.categoryId,
+      UserId: req.decodedUserData.id
     })
-      .then((businessAlreadyExist) => {
-        if (businessAlreadyExist) {
-          return res.status(400).json({ message: 'Business name already in use' });
-        }
-        Business.create({
-          name: req.body.name,
-          LocationId: req.body.locationId,
-          mobile: req.body.mobile,
-          description: req.body.description,
-          url: req.body.url,
-          CategoryId: req.body.categoryId,
-          UserId: req.decodedUserData.id
-        })
-          .then(newBusiness => res.status(201).json({
-            message: 'Business has been successfully created',
-            newBusiness
-          }))
-          .catch((error) => {
-            // check for sequelize error, also pass the name of the error
-            // and the property (path) that caused the error to be raised
-            // res is to the calling function to enable returning status and JSON
-            // checkSequelizeError(error.name, error.errors[0].path, res);
-            if (error.name === 'SequelizeUniqueConstraintError') {
-              return res.status(409).json({ message: `${error.errors[0].path} is already in use` });
-            }
-          })
-          .catch(error => res.status(400).send(error));
-      });
+      .then(newBusiness => res.status(201).json({
+        message: 'Business has been successfully created',
+        newBusiness
+      }))
+      .catch(error => res.status(400).send(error));
   }
+
   /** @static
     * @description Makes changes to registerd business
     * @param  {object} req gets values passed to the api
@@ -98,32 +77,21 @@ class businessController {
        * @returns {object} Success message with the business updated or error message
        */
   static deleteBusiness(req, res) {
-    // check if business exist
-    Business.findOne({
+    Business.destroy({
       where: {
-        id: req.params.businessId
+        [Op.and]: [{ id: req.params.businessId }, { UserId: req.decodedUserData.id }]
       }
-    }).then((businessFound) => {
-      if (!businessFound) {
-        return res.status(200).json({ message: 'Busines not found' });
-      }
-      // if the business exist, ensure a user can only delete a business registered by the user
-      Business.destroy({
-        where: {
-          [Op.and]: [{ id: req.params.businessId }, { UserId: req.decodedUserData.id }]
-        }
-      })
-        .then((deletedBusiness) => {
-          if (deletedBusiness !== 1) {
-            return res.status(404).json({ message: 'You can only delete a business registered by you' });
-          }
-          return res.status(200).json({
-            message: 'Business has been succesfully deleted',
-            thetype: typeof deletedBusiness,
-            deletedBusiness
-          });
-        });
     })
+      .then((deletedBusiness) => {
+        if (deletedBusiness !== 1) {
+          return res.status(400).json({ message: 'You can only delete a business registered by you' });
+        }
+        return res.status(200).json({
+          message: 'Business has been succesfully deleted',
+          thetype: typeof deletedBusiness,
+          deletedBusiness
+        });
+      })
       .catch(error => res.status(409).send(error));
   }
 

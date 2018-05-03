@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import winston from 'winston';
 import models from '../models';
 
-const { Business } = models;
+const { Business, User } = models;
 
 exports.checkifBusinessExist = (id) => {
   Business.findOne({
@@ -17,18 +17,6 @@ exports.checkifBusinessExist = (id) => {
   }).catch(error => error);
 };
 
-exports.businessExistence = (businessId) => {
-  Business.findOne({
-    where: {
-      id: businessId
-    }
-  }).then((businessIsAvailable) => {
-    if (!businessIsAvailable) {
-      return false;
-    }
-    return true;
-  }).catch(error => error);
-};
 exports.checkSequelizeError = (errorTocheck, key, res) => {
   if (errorTocheck === 'SequelizeUniqueConstraintError') {
     return res.status(400).json({
@@ -52,8 +40,62 @@ exports.checkAuthentication = (req, res, next) => {
     next();
   } catch (error) {
     return res.status(401).json({
-      message: 'Invalid email or password token is missing'
+      message: 'Invalid email or password; token is missing'
     });
   }
 };
 
+exports.checkBusinessId = (req, res, next) => {
+  Business.findOne({
+    where: {
+      id: req.params.businessId
+    }
+  })
+    .then((businessExist) => {
+      if (!businessExist) {
+        return res.status(404).json({ message: 'Business does not exist' });
+      }
+      next();
+    });
+};
+
+exports.checkBusinessName = (req, res, next) => {
+  Business.findOne({
+    where: {
+      name: req.body.name
+    }
+  })
+    .then((businessNameExist) => {
+      if (!businessNameExist) {
+        return res.status(404).json({ message: 'Business Name is already in use' });
+      }
+      next();
+    });
+};
+
+exports.checkIfEmailAlreadyExist = (req, res, next) => {
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then((emailAlreadyExist) => {
+    if (emailAlreadyExist) {
+      return res.status(400).json({ message: 'Email already exist' });
+    }
+    next();
+  });
+};
+
+exports.checkIfUserIsAdmin = (req, res, next) => {
+  User.findOne({
+    where: {
+      email: 'firstadmin@email.com' // req.decodedUserData.email
+    }
+  })
+    .then((user) => {
+      if (user.role !== 'admin') {
+        return res.status(400).json({ message: 'User is not an admin' });
+      }
+      next();
+    });
+};
