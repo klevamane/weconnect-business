@@ -5,6 +5,7 @@ import logger from 'morgan';
 import expressValidator from 'express-validator';
 import userRoutes from './routes/userRoute';
 import businessRoutes from './routes/businessRoute';
+import adminRoutes from './routes/adminRoute';
 
 
 const app = express();
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 app.use(expressValidator());
 
 app.use('/api/v1/auth', userRoutes);
+app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/businesses', businessRoutes);
 
 app.get('*', (req, res, next) => {

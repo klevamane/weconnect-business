@@ -2,3 +2,5 @@ node_modules
 ./server/routes/sandboxroute
 .vscode
 .nyc_output
+./server/helper/sandbox.js
+texttxt.txt
