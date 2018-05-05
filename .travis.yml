@@ -11,15 +11,15 @@ cache:
 before_script:
  - npm install
  - "psql -c 'create database testdb;' -U user"
-  - npm run test-migrate
+ - npm run test-migrate
 script:
  - npm run test
 after_success:
- - npm run coverage
+#  - npm run coverage
 #  - npm run report-coverage
 #  - npm run coveralls
-   - npm run coverage
-   - npm run codeclimate-report
-   - npm run check-coverage
+ - npm run coverage
+ - npm run codeclimate-report
+ - npm run check-coverage
 env:
   global:
