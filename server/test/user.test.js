@@ -32,7 +32,8 @@ describe('POST USER /user', () => {
       email: 'validuser@email.com',
       firstname: 'Durant',
       lastname: 'Kevin',
-      password: 'password123'
+      password: 'password123',
+      role: 'client'
     };
     chai.request(app)
       .post('/api/v1/auth/signup')

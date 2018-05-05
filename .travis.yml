@@ -3,16 +3,23 @@ node_js:
  - "6"
 notifications:
  email: false
+services:
+  - postgresql
 cache:
  directories:
    - node_modules
 before_script:
  - npm install
+ - "psql -c 'create database testdb;' -U user"
+  - npm run test-migrate
 script:
  - npm run test
 after_success:
  - npm run coverage
 #  - npm run report-coverage
 #  - npm run coveralls
+   - npm run coverage
+   - npm run codeclimate-report
+   - npm run check-coverage
 env:
   global:
