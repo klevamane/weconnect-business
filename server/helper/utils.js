@@ -1,7 +1,8 @@
+import Joi from 'joi';
 import jwt from 'jsonwebtoken';
 import winston from 'winston';
 import models from '../models';
-import Joi from 'Joi';
+
 
 const { Business, User } = models;
 
