@@ -29,34 +29,18 @@ describe('POST USER /user', () => {
   // doBeforeEach();
   it('should create a new user', (done) => {
     const user = {
-      email: 'validuser@email.com',
-      firstname: 'Durant',
-      lastname: 'Kevin',
+      firstname: 'Bestman',
+      email: 'nuemail@email.com',
+      lastname: 'Jonji',
       password: 'password123',
-      role: 'client'
     };
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send(user)
       .end((err, res) => {
         expect(res).to.have.status(201);
-        expect(res).to.be.an('object');
-        done();
-      });
-  });
-
-  it('should return an object', (done) => {
-    const user = {
-      email: 'usertwo@email.com',
-      firstname: 'Durant',
-      lastname: 'Kevin',
-      password: 'password'
-    };
-    chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send(user)
-      .end((err, res) => {
-        expect(res).to.be.an('object');
+        expect(res.body).to.be.a('object');
+        expect(res.body.message).to.equal('User created');
         done();
       });
   });
@@ -132,7 +116,7 @@ describe('POST USER /user', () => {
   it('Email already exist', (done) => {
     const user = {
       firstname: 'firstname',
-      email: 'validuser@email.com',
+      email: 'nuemail@email.com',
       lastname: 'lastname',
       password: 'password123',
     };
@@ -146,7 +130,6 @@ describe('POST USER /user', () => {
       });
   });
 });
-
 // Login
 
 describe('POST /auth/login', () => {
@@ -167,7 +150,7 @@ describe('POST /auth/login', () => {
 
   it('should authenticate a registered user', (done) => {
     const user = {
-      email: 'validuser@email.com',
+      email: 'nuemail@email.com',
       password: 'password123'
     };
     chai.request(app)
@@ -211,7 +194,7 @@ describe('POST /auth/login', () => {
 
   it('Should return User has been authenticated', (done) => {
     const user = {
-      email: 'validuser@email.com',
+      email: 'nuemail@email.com',
       password: 'password123'
     };
     chai.request(app)

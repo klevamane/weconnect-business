@@ -31,7 +31,7 @@ class usercontroller {
         email: req.body.email,
         password: hash
       })
-        .then(newUser => res.status(201).send(newUser))
+        .then((newUser) => { res.status(201).json({ message: 'User created', newUser }); })
         .catch(error => res.status(400).send(error));
     });
   }
