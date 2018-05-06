@@ -1,5 +1,7 @@
-import { check } from 'express-validator/check';
 import Joi from 'joi';
+import { check } from 'express-validator/check';
+import { validateCreateBusinessSchema } from './utils';
+
 
 export const checkEmail = (req, res, next) => {
   check('email', 'Invalid email').isEmail();
@@ -74,17 +76,13 @@ export const validateCreateUser = (req, res, next) => {
   if (error) {
     switch (error.details[0].context.key) {
       case 'email':
-        res.status(400).json({ error: 'You must provide a valid email address' });
-        break;
+        res.status(400).json({ error: 'You must provide a valid email address' }); break;
       case 'password':
-        res.status(400).json({ error: 'Password must be between 6-15 characters' });
-        break;
+        res.status(400).json({ error: 'Password must be between 6-15 characters' }); break;
       case 'lastname':
-        res.status(400).json({ error: 'lastname must contain only alphabets' });
-        break;
+        res.status(400).json({ error: 'lastname must contain only alphabets' }); break;
       case 'firstname':
-        res.status(400).json({ error: 'firstname must contain only alphabets' });
-        break;
+        res.status(400).json({ error: 'firstname must contain only alphabets' }); break;
       default:
         res.status(400).send({ error: 'Invalid User details' });
     }
@@ -94,15 +92,8 @@ export const validateCreateUser = (req, res, next) => {
 };
 
 export const validateCreateBusiness = (req, res, next) => {
-  const schema = {
-    description: Joi.string().required().min(5).max(200),
-    url: Joi.string().uri().required(),
-    name: Joi.string().max(15).regex(/^[a-zA-Z ]+$/).required(),
-    mobile: Joi.string().max(11).regex(/^[0-9]{1}[7-9]{1}[0-1]{1}[1-9]{1}[0-9]{7}/).required(),
-    locationId: Joi.string().required().max(1),
-    categoryId: Joi.string().required().max(1),
-  };
-  const { error, value } = Joi.validate(req.body, schema);
+  // use validateCreate business schema imported from utils as validation schema
+  const { error, value } = Joi.validate(req.body, validateCreateBusinessSchema);
   if (error) {
     switch (error.details[0].context.key) {
       case 'name':
@@ -112,7 +103,7 @@ export const validateCreateBusiness = (req, res, next) => {
         res.status(400).json({ error: 'Mobile number must be in Nigerian Format' });
         break;
       case 'url':
-        res.status(400).json({ error: 'Enter a valid website address in format http://' });
+        res.status(400).json({ error: 'Enter a valid website address in format http://www.sitename.com' });
         break;
       case 'categoryId':
         res.status(400).json({ error: 'Category ID must be a Number' });

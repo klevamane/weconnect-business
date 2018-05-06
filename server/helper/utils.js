@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import winston from 'winston';
 import models from '../models';
+import Joi from 'Joi';
 
 const { Business, User } = models;
 
@@ -24,6 +25,15 @@ exports.checkSequelizeError = (errorTocheck, key, res) => {
       err: true
     });
   }
+};
+
+exports.validateCreateBusinessSchema = {
+  description: Joi.string().required().min(5).max(200),
+  url: Joi.string().uri().required(),
+  name: Joi.string().max(15).regex(/^[a-zA-Z ]+$/).required(),
+  mobile: Joi.string().max(11).regex(/^[0-9]{1}[7-9]{1}[0-1]{1}[1-9]{1}[0-9]{7}/).required(),
+  locationId: Joi.string().required().max(1),
+  categoryId: Joi.string().required().max(1),
 };
 
 exports.checkAuthentication = (req, res, next) => {

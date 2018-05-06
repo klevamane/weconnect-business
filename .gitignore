@@ -4,3 +4,4 @@ node_modules
 .nyc_output
 ./server/helper/sandbox.js
 texttxt.txt
+.env
