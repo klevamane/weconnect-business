@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "user",
+    "password": "user",
+   "database": "sampledbtwo",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "user",
+    "password": "user",
+    "database": "sampledbtest",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

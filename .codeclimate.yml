@@ -10,9 +10,3 @@ checks:
    enabled: false
  file-lines:
    enabled: false
-plugins: 
-  eslint:
-    enabled: true
-    config:
-      config: .eslintrc
-    channel: "eslint-4"
